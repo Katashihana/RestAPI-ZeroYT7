@@ -6,12 +6,12 @@ var db = require(__path + '/database/db');
 try {
 var kuhong = db.get('ojan'); // jan diubah
 } catch (e) {
-	console.log('WELCOME TO ZEROYT7 API!') // boleh diubah
+	console.log('WELCOME TO HANA API!') // boleh diubah
 }
 
-var creatorList = ['Zero YT7']; // Nama Lu Ngab
+var creatorList = ['Katashi Hana']; // Nama Lu Ngab
 var creator = creatorList[Math.floor(Math.random() * creatorList.length)]; // Ini jan diubah
-var key = 'ZeroYT7' // Apikey Lu Ngab
+var key = 'Katashi' // Apikey Lu Ngab
 
 // Required Modules :
 var ffmpeg = require('fluent-ffmpeg');
@@ -2342,7 +2342,7 @@ router.get('/playstore', async (req, res, next) => {
 	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
     if (!namaapk) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter nama apk"})
 
-       fetch(encodeURI(`https://api.zeks.xyz/api/sgplay?apikey=apivinz&q=${namaapk}`))
+       fetch(encodeURI(`https://api.zeks.xyz/api/sgplay?apikey=Iyungputra&q=${namaapk}`))
         .then(response => response.json())
         .then(data => {
         var result = data;
@@ -2364,7 +2364,7 @@ router.get('/happymod', async (req, res, next) => {
 	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
     if (!namaapk) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter nama apk"})
 
-       fetch(encodeURI(`https://api.zeks.xyz/api/happymod?apikey=apivinz&q=${namaapk}`))
+       fetch(encodeURI(`https://api.zeks.xyz/api/happymod?apikey=Iyungputra&q=${namaapk}`))
         .then(response => response.json())
         .then(data => {
         var result = data;
@@ -2386,7 +2386,7 @@ router.get('/Gsm', async (req, res, next) => {
 	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
     if (!ygdicarik) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter nama ygdicarik"})
 
-       fetch(encodeURI(`https://api.zeks.xyz/api/gsmArena?apikey=apivinz&q=${ygdicarik}`))
+       fetch(encodeURI(`https://api.zeks.xyz/api/gsmArena?apikey=Iyungputra&q=${ygdicarik}`))
         .then(response => response.json())
         .then(data => {
         var result = data;
@@ -2408,7 +2408,7 @@ router.get('/sticker', async (req, res, next) => {
 	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
     if (!nama) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter nama"})
 
-       fetch(encodeURI(`https://api.zeks.xyz/api/searchsticker?apikey=apivinz&q=${nama}`))
+       fetch(encodeURI(`https://api.zeks.xyz/api/searchsticker?apikey=Iyungputra&q=${nama}`))
         .then(response => response.json())
         .then(data => {
         var result = data;
@@ -2430,7 +2430,7 @@ router.get('/sticker/line', async (req, res, next) => {
 	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
     if (!link) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter link"})
 
-       fetch(encodeURI(`https://api.zeks.xyz/api/linesticker?link=${link}&apikey=apivinz`))
+       fetch(encodeURI(`https://api.zeks.xyz/api/linesticker?link=${link}&apikey=Iyungputra`))
         .then(response => response.json())
         .then(data => {
         var result = data;
@@ -2452,7 +2452,7 @@ router.get('/sticker/telegram', async (req, res, next) => {
 	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
     if (!link) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter link"})
 
-       fetch(encodeURI(`https://api.zeks.xyz/api/telegram-sticker?apikey=apivinz&url={link}`))
+       fetch(encodeURI(`https://api.zeks.xyz/api/telegram-sticker?apikey=Iyungputra&url={link}`))
         .then(response => response.json())
         .then(data => {
         var result = data;
@@ -2474,7 +2474,7 @@ router.get('/jadwal/tv', async (req, res, next) => {
 	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
     if (!channel) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter channel"})
 
-       fetch(encodeURI(`https://api.zeks.xyz/api/jadwaltv?channel=${channel}&apikey=apivinz`))
+       fetch(encodeURI(`https://api.zeks.xyz/api/jadwaltv?channel=${channel}&apikey=Iyungputra`))
         .then(response => response.json())
         .then(data => {
         var result = data;
@@ -2496,7 +2496,7 @@ router.get('/iguser', async (req, res, next) => {
 	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
     if (!nama) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter nama"})
 
-       fetch(encodeURI(`https://api.zeks.xyz/api/iguser?apikey=apivinz&q=${nama}`))
+       fetch(encodeURI(`https://api.zeks.xyz/api/iguser?apikey=Iyungputra&q=${nama}`))
         .then(response => response.json())
         .then(data => {
         var result = data;
@@ -3308,7 +3308,7 @@ router.get('/simsimi', async (req, res, next) => {
         if (!kata) return res.json(loghandler.notkata)
 
  try {
-       var json = await (await fetch(`https://api.zeks.xyz/api/simi?apikey=apivinz&text=${kata}`)).json()
+       var json = await (await fetch(`https://api.zeks.xyz/api/simi?apikey=Iyungputra&text=${kata}`)).json()
         var result = json.success
              res.json({
              	status : true,
@@ -3597,7 +3597,7 @@ router.get('/tahta', async (req, res, next) => {
   if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
   if (!text) return res.json(loghandler.nottext)
 
-     var hasil = await (await fetch(`https://api.zeks.xyz/api/hartatahta?text=${text}&apikey=apivinz`)).buffer()
+     var hasil = await (await fetch(`https://api.zeks.xyz/api/hartatahta?text=${text}&apikey=Iyungputra`)).buffer()
        await fs.writeFileSync(__path + '/tmp/tahta.png', hasil)
 
     res.sendFile(__path + '/tmp/tahta.png')
@@ -3611,7 +3611,7 @@ router.get('/customtahta', async (req, res, next) => {
   if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
   if (!text) return res.json(loghandler.nottext)
 
-     var hasil = await (await fetch(`https://api.zeks.xyz/api/tahta?text=${text}&apikey=apivinz`)).buffer()
+     var hasil = await (await fetch(`https://api.zeks.xyz/api/tahta?text=${text}&apikey=Iyungputra`)).buffer()
        await fs.writeFileSync(__path + '/tmp/cstahta.png', hasil)
 
     res.sendFile(__path + '/tmp/cstahta.png')
@@ -3707,7 +3707,7 @@ try {
   if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
   if (!emoji) return res.json(loghandler.notemoji)
 
-     var hasil = await (await fetch(`https://api.zeks.xyz/api/emoji-image?apikey=apivinz&emoji=${encodeURIComponent(emoji)}`)).buffer()
+     var hasil = await (await fetch(`https://api.zeks.xyz/api/emoji-image?apikey=Iyungputra&emoji=${encodeURIComponent(emoji)}`)).buffer()
         await fs.writeFileSync(__path + '/tmp/emojitopng.png', hasil)
 
          res.sendFile(__path + '/tmp/emojitopng.png')
@@ -3725,7 +3725,7 @@ try {
   if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
   if (!text) return res.json(loghandler.nottext)
 
-     var json = await (await fetch(`https://api.zeks.xyz/api/brainly?apikey=apivinz&q=${text}&count=5`)).json()
+     var json = await (await fetch(`https://api.zeks.xyz/api/brainly?apikey=Iyungputra&q=${text}&count=5`)).json()
        res.json(json)
      
 } catch (e) {
@@ -3741,7 +3741,7 @@ try {
   if(!apikeyInput) return res.json(loghandler.notparam)
   if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
 
-     var json = await (await fetch(`https://api.zeks.xyz/api/pantun?apikey=apivinz`)).json()
+     var json = await (await fetch(`https://api.zeks.xyz/api/pantun?apikey=Iyungputra`)).json()
          res.json(json)
 
 } catch (e) {
@@ -3757,7 +3757,7 @@ try {
   if(!apikeyInput) return res.json(loghandler.notparam)
   if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
 
-     var json = await (await fetch(`https://api.zeks.xyz/api/memeindo?apikey=apivinz`)).json()
+     var json = await (await fetch(`https://api.zeks.xyz/api/memeindo?apikey=Iyungputra`)).json()
      var hasil = await getBuffer(json.result)
        await fs.writeFileSync(__path + '/tmp/memeindo.png', hasil)
 
@@ -3909,7 +3909,7 @@ try {
   if (!url) return res.json(loghandler.noturl)
   if (!url.startsWith('http')) return res.json(loghandler.invalidLink)
 
-     var json = await (await fetch(`https://api.zeks.xyz/api/mediafire?apikey=apivinz&url=${url}`)).json()
+     var json = await (await fetch(`https://api.zeks.xyz/api/mediafire?apikey=Iyungputra&url=${url}`)).json()
          res.json(json)
 
 } catch (e) {
@@ -3948,7 +3948,7 @@ try {
   if(!apikeyInput) return res.json(loghandler.notparam)
   if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
 
-     var json = await (await fetch(`https://api.zeks.xyz/api/darkjokes?apikey=apivinz`)).json()
+     var json = await (await fetch(`https://api.zeks.xyz/api/darkjokes?apikey=Iyungputra`)).json()
      var hasil = await getBuffer(json.result)
        await fs.writeFileSync(__path + '/tmp/darkjokes.png', hasil)
 
@@ -3968,7 +3968,7 @@ try {
   if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
   if (!text) return res.json(loghandler.nottext)
 
-     var hasil = await getBuffer(`https://api.zeks.xyz/api/splaybutton?text=${text}&apikey=apivinz`)
+     var hasil = await getBuffer(`https://api.zeks.xyz/api/splaybutton?text=${text}&apikey=Iyungputra`)
        await fs.writeFileSync(__path + '/tmp/playbutton.png', hasil)
 
          res.sendFile(__path + '/tmp/playbutton.png')
@@ -3987,7 +3987,7 @@ try {
   if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
   if (!text) return res.json(loghandler.nottext)
 
-     var hasil = await getBuffer(`https://api.zeks.xyz/api/gplaybutton?text=${text}&apikey=apivinz`)
+     var hasil = await getBuffer(`https://api.zeks.xyz/api/gplaybutton?text=${text}&apikey=Iyungputra`)
        await fs.writeFileSync(__path + '/tmp/playbutton2.png', hasil)
 
          res.sendFile(__path + '/tmp/playbutton2.png')
@@ -4006,7 +4006,7 @@ try {
   if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
   if (!text) return res.json(loghandler.nottext)
 
-     var hasil = await getBuffer(`https://api.zeks.xyz/api/sandw?apikey=apivinz&text=${text}`)
+     var hasil = await getBuffer(`https://api.zeks.xyz/api/sandw?apikey=Iyungputra&text=${text}`)
        await fs.writeFileSync(__path + '/tmp/pantai.png', hasil)
 
          res.sendFile(__path + '/tmp/pantai.png')
@@ -4027,7 +4027,7 @@ try {
   if (!t1) return res.json(loghandler.nottext)
   if (!t2) return res.json(loghandler.nottext2)
 
-     var json = await (await fetch(`https://api.zeks.xyz/api/snowwrite?text1=${t1}&text2=${t2}&apikey=apivinz`)).json()
+     var json = await (await fetch(`https://api.zeks.xyz/api/snowwrite?text1=${t1}&text2=${t2}&apikey=Iyungputra`)).json()
        await fs.writeFileSync(__path + '/tmp/salju.png', await getBuffer(json.result))
 
          res.sendFile(__path + '/tmp/salju.png')
@@ -4067,7 +4067,7 @@ try {
   if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
   if (!text) return res.json(loghandler.nottext)
 
-     var hasil = await getBuffer(`https://api.zeks.xyz/api/tfire?text=${text}&apikey=apivinz`)
+     var hasil = await getBuffer(`https://api.zeks.xyz/api/tfire?text=${text}&apikey=Iyungputra`)
        await fs.writeFileSync(__path + '/tmp/firework.png', hasil)
 
          res.sendFile(__path + '/tmp/firework.png')
@@ -4090,7 +4090,7 @@ try {
   if (!t2) return res.json(loghandler.nottext2)
   if (!t3) return res.json(loghandler.nottext3)
 
-     var json = await (await fetch(`https://api.zeks.xyz/api/retro?text1=${t1}&text2=${t2}&text3=${t3}&apikey=apivinz`)).json()
+     var json = await (await fetch(`https://api.zeks.xyz/api/retro?text1=${t1}&text2=${t2}&text3=${t3}&apikey=Iyungputra`)).json()
        await fs.writeFileSync(__path + '/tmp/retro.png', await getBuffer(json.result))
 
          res.sendFile(__path + '/tmp/retro.png')
@@ -4109,7 +4109,7 @@ try {
   if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
   if (!text) return res.json(loghandler.nottext)
 
-     var hasil = await getBuffer(`https://api.zeks.xyz/api/matrix?apikey=apivinz&text=${text}`)
+     var hasil = await getBuffer(`https://api.zeks.xyz/api/matrix?apikey=Iyungputra&text=${text}`)
        await fs.writeFileSync(__path + '/tmp/matrix.png', hasil)
 
          res.sendFile(__path + '/tmp/matrix.png')
@@ -4128,7 +4128,7 @@ try {
   if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
   if (!text) return res.json(loghandler.nottext)
 
-     var hasil = await getBuffer(`https://api.zeks.xyz/api/text3dbox?apikey=apivinz&text=${text}`)
+     var hasil = await getBuffer(`https://api.zeks.xyz/api/text3dbox?apikey=Iyungputra&text=${text}`)
        await fs.writeFileSync(__path + '/tmp/3d.png', hasil)
 
          res.sendFile(__path + '/tmp/3d.png')
@@ -4168,7 +4168,7 @@ try {
   if (!t1) return res.json(loghandler.nottext)
   if (!t2) return res.json(loghandler.nottext2)
 
-     var hasil = await getBuffer(`https://api.zeks.xyz/api/phlogo?text1=${t1}&text2=${t2}&apikey=apivinz`)
+     var hasil = await getBuffer(`https://api.zeks.xyz/api/phlogo?text1=${t1}&text2=${t2}&apikey=Iyungputra`)
        await fs.writeFileSync(__path + '/tmp/pornhub.png', hasil)
 
          res.sendFile(__path + '/tmp/pornhub.png')
@@ -4188,7 +4188,7 @@ try {
   if (!t1) return res.json(loghandler.nottext)
   if (!t2) return res.json(loghandler.nottext2)
 
-     var hasil = await getBuffer(`https://api.zeks.xyz/api/marvellogo?text1=${t1}&text2=${t2}&apikey=apivinz`)
+     var hasil = await getBuffer(`https://api.zeks.xyz/api/marvellogo?text1=${t1}&text2=${t2}&apikey=Iyungputra`)
        await fs.writeFileSync(__path + '/tmp/marvel.png', hasil)
 
          res.sendFile(__path + '/tmp/marvel.png')
@@ -4207,7 +4207,7 @@ try {
   if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
   if (!text) return res.json(loghandler.nottext)
 
-     var hasil = await getBuffer(`https://api.zeks.xyz/api/logobp?text=${text}&apikey=apivinz`)
+     var hasil = await getBuffer(`https://api.zeks.xyz/api/logobp?text=${text}&apikey=Iyungputra`)
        await fs.writeFileSync(__path + '/tmp/bp.png', hasil)
 
          res.sendFile(__path + '/tmp/bp.png')
@@ -4227,7 +4227,7 @@ try {
   if (!t1) return res.json(loghandler.nottext)
   if (!t2) return res.json(loghandler.nottext2)
 
-     var hasil = await getBuffer(`https://api.zeks.xyz/api/logoaveng?text1=${t1}&text2=${t2}&apikey=apivinz`)
+     var hasil = await getBuffer(`https://api.zeks.xyz/api/logoaveng?text1=${t1}&text2=${t2}&apikey=Iyungputra`)
        await fs.writeFileSync(__path + '/tmp/avenger.png', hasil)
 
          res.sendFile(__path + '/tmp/avenger.png')
@@ -4246,7 +4246,7 @@ try {
   if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
   if (!text) return res.json(loghandler.nottext)
 
-     var hasil = await getBuffer(`https://api.zeks.xyz/api/thundertext?text=${text}&apikey=apivinz`)
+     var hasil = await getBuffer(`https://api.zeks.xyz/api/thundertext?text=${text}&apikey=Iyungputra`)
        await fs.writeFileSync(__path + '/tmp/thunder.png', hasil)
 
          res.sendFile(__path + '/tmp/thunder.png')
@@ -4484,7 +4484,7 @@ try {
   if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
   if (!q) return res.json(loghandler.notquery)
 
-     var json = await (await fetch(`https://api.zeks.xyz/api/spotify?apikey=apivinz&q=${q}`)).json()
+     var json = await (await fetch(`https://api.zeks.xyz/api/spotify?apikey=Iyungputra&q=${q}`)).json()
 
      res.json(json)
 } catch (e) {

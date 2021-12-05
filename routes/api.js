@@ -46,6 +46,23 @@ var { fetchJson } = require(__path + '/lib/fetcher.js')
 var { recognize } = require(__path + '/lib/ocr.js')
 var options = require(__path + '/lib/options.js');
 var { Vokal, Base, Searchnabi, Gempa } = require('./../lib');
+var {
+  palingmurah_,
+  layarkaca_,
+  Amino_,
+} = require("./../lib/search");
+
+var {
+  jalantikus,
+  turnbackhoax,
+  muihalal,
+  happymod,
+  apkmody,
+  moddroid,
+  servermc,
+  mcpedl,
+  pstore,
+} = require("./../lib/tod");
 var cookie = "HSID=A7EDzLn3kae2B1Njb;SSID=AheuwUjMojTWvA5GN;APISID=cgfXh13rQbb4zbLP/AlvlPJ2xBJBsykmS_;SAPISID=m82rJG4AC9nxQ5uG/A1FotfA_gi9pvo91C;__Secure-3PAPISID=m82rJG4AC9nxQ5uG/A1FotfA_gi9pvo91C;VISITOR_INFO1_LIVE=RgZLnZtCoPU;LOGIN_INFO=AFmmF2swRQIhAOXIXsKVou2azuz-kTsCKpbM9szRExAMUD-OwHYiuB6eAiAyPm4Ag3O9rbma7umBK-AG1zoGqyJinh4ia03csp5Nkw:QUQ3MjNmeXJ0UHFRS3dzaTNGRmlWR2FfMDRxa2NRYTFiN3lfTEdOVTc4QUlwbUI4S2dlVngxSG10N3ZqcHZwTHBKano5SkN2dDlPSkhRMUtReE42TkhYeUVWS3kyUE1jY2I1QzA1MDZBaktwd1llWU9lOWE4NWhoZV92aDkxeE9vMTNlcG1uMU9rYjhOaDZWdno2ZzN3TXl5TVNhSjNBRnJaMExrQXpoa2xzRVUteFNWZDI5S0Fn;PREF=app=desktop&f4=4000000&al=id;SID=2wezCMTUkWN3YS1VmS_DXaEU84J0pZIQdemM8Zry-uzWm8y1njBpLTOpxSfN-EaYCRSiDg.;YSC=HCowA1fmvzo;__Secure-3PSID=2wezCMTUkWN3YS1VmS_DXaEU84J0pZIQdemM8Zry-uzWm8y1dajgWzlBh9TgKapGOwuXfA.;SIDCC=AJi4QfFK0ri9fSfMjMQ4tOJNp6vOb9emETXB_nf2S05mvr2jBlmeEvlSsQSzPMuJl_V0wcbL1r8;__Secure-3PSIDCC=AJi4QfGeWHx-c4uTpU1rXCciO1p0s2fJWU07KrkZhWyD1Tqi8LyR-kHuBwHY9mViVYu1fRh2PA";
 
 // loghandler :
@@ -109,6 +126,12 @@ loghandler = {
         creator: `${creator}`,
         code: 406,
         message: 'Masukan parameter query'
+    },
+    notpage: {
+        status: false,
+        creator: `${creator}`,
+        code: 406,
+        message: 'Masukan parameter page'
     },
     notkata: {
         status: false,
@@ -235,7 +258,7 @@ var invalidKey = __path + '/views/invalidKey.html' // Apikey Invalid
             randomlagi += arr[Math.floor(Math.random() * arr.length)];
         }
 
-        var randomTextNumber = random+randomlagi+'---------kuhong-api-storage'+'ZeroYT7';
+        var randomTextNumber = random+randomlagi+'---------kuhong-api-storage'+'Katashi';
 
 
 router.get('/cekapikey', async (req, res, next) => {
@@ -349,26 +372,6 @@ router.get('/tiktod/stalk', async (req, res, next) => {
                  message : "Username tidak ditemukan!"
              })
          })
-})
-
-router.get('/randomquote', async (req, res, next) => {
-        var apikeyInput = req.query.apikey
-            
-	if(!apikeyInput) return res.json(loghandler.notparam)
-	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-
-       fetch(encodeURI(`https://api.zeks.xyz/api/quote?apikey=alpin1234567`))
-        .then(response => response.json())
-        .then(data => {
-        var result = data;
-             res.json({
-                 creator : `${creator}`,
-                 result
-             })
-         })
-         .catch(e => {
-         	res.sendFile(error)
-})
 })
 
 
@@ -894,6 +897,112 @@ router.get('/kisahnabi', async (req, res, next) => {
 		})
 })
 
+router.get("/search/muihalal", async(req, res, next) => {
+  apikeyInput = req.query.apikey;
+   query = req.query.query;
+   page = req.query.query;
+  if(!query) return res.json(loghandler.notquery)
+  if(!page) return res.json(loghandler.notpage)
+  if (!apikeyInput) return res.json(loghandler.notparam)
+		if (apikeyInput !== `${key}`) return res.sendFile(invalidKey)
+  muihalal(query, page)
+    .then((data) => {
+      res.json(data)
+    })
+  .catch(e => {
+			console.log('Error :', color(e, 'red'))
+			res.sendFile(error)
+		})
+})
+
+router.get("/search/jalantikus", async(req, res, next) => {
+  apikeyInput = req.query.apikey;
+   query = req.query.query;
+  if(!query) return res.json(loghandler.notquery)
+  if (!apikeyInput) return res.json(loghandler.notparam)
+		if (apikeyInput !== `${key}`) return res.sendFile(invalidKey)
+  jalantikus(query)
+    .then((data) => {
+      res.json(data)
+    })
+  .catch(e => {
+			console.log('Error :', color(e, 'red'))
+			res.sendFile(error)
+		})
+})
+
+router.get("/search/layarkaca", async(req, res, next) => {
+  apikeyInput = req.query.apikey;
+   query = req.query.query;
+  if(!query) return res.json(loghandler.notquery)
+  if (!apikeyInput) return res.json(loghandler.notparam)
+		if (apikeyInput !== `${key}`) return res.sendFile(invalidKey)
+  layarkaca_(pilem)
+    .then((data) => {
+      res.json(data)
+    })
+  .catch(e => {
+			console.log('Error :', color(e, 'red'))
+			res.sendFile(error)
+		})
+})
+
+router.get("/search/hoax", async(req, res, next) => {
+  apikeyInput = req.query.apikey;
+  if (!apikeyInput) return res.json(loghandler.notparam)
+		if (apikeyInput !== `${key}`) return res.sendFile(invalidKey)
+  turnbackhoax
+    .then((data) => {
+      res.json(data)
+    })
+  .catch(e => {
+			console.log('Error :', color(e, 'red'))
+			res.sendFile(error)
+		})
+})
+
+router.get("/search/servermc", async(req, res, next) => {
+  apikeyInput = req.query.apikey;
+  if (!apikeyInput) return res.json(loghandler.notparam)
+		if (apikeyInput !== `${key}`) return res.sendFile(invalidKey)
+  servermc
+    .then((data) => {
+      res.json(data)
+    })
+  .catch(e => {
+			console.log('Error :', color(e, 'red'))
+			res.sendFile(error)
+		})
+})
+
+router.get("/search/hentaivid", async(req, res, next) => {
+  apikeyInput = req.query.apikey;
+  if (!apikeyInput) return res.json(loghandler.notparam)
+		if (apikeyInput !== `${key}`) return res.sendFile(invalidKey)
+  exports.hentaivid
+    .then((resolve) => {
+      res.json
+    })
+  .catch(e => {
+			console.log('Error :', color(e, 'red'))
+			res.sendFile(error)
+		})
+})
+
+router.get("/search/ttporn", async(req, res, next) => {
+  apikeyInput = req.query.apikey;
+  if (!apikeyInput) return res.json(loghandler.notparam)
+		if (apikeyInput !== `${key}`) return res.sendFile(invalidKey)
+  exports.pornvid
+    .then((resolve) => {
+      res.json
+    })
+  .catch(e => {
+			console.log('Error :', color(e, 'red'))
+			res.sendFile(error)
+		})
+})
+
 router.get('/infogempa', async (req, res, next) => {
 	        var apikeyInput = req.query.apikey
 
@@ -1155,26 +1264,6 @@ router.get('/textmaker/alam', async (req, res, next) => {
         }
 })
 
-router.get('/flaming', async (req, res, next) => {
-         var text = req.query.text,
-             apikeyInput = req.query.apikey;
-        
-	if(!apikeyInput) return res.json(loghandler.notparam)
-	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-        if (!text) return res.json(loghandler.nottext)
-
-  try {
-         var json = await (await fetch(`http://zekais-api.herokuapp.com/photooxy/flaming?text=${text}`)).json()
-	 var buffer = await (await fetch(`https://api.imgbb.com/1/upload?expiration=120&key=761ea2d5575581057a799d14e9c78e28&image=${json.result}&name=ZeroYT7`)).json()
-	   await fs.writeFileSync(__path + '/tmp/flaming.png', await getBuffer(buffer.data.url))
-	  
-	res.sendFile(__path + '/tmp/flaming.png')
-   } catch (e) {
-       console.log(e);
-     res.sendFile(error)
-       }
-})
-
 router.get('/neon', async (req, res, next) => {
          var text = req.query.text,
              apikeyInput = req.query.apikey;
@@ -1185,7 +1274,7 @@ router.get('/neon', async (req, res, next) => {
 
   try {
          var json = await (await fetch(`http://zekais-api.herokuapp.com/photooxy/neon?text=${text}`)).json()
-	 var buffer = await (await fetch(`https://api.imgbb.com/1/upload?expiration=120&key=761ea2d5575581057a799d14e9c78e28&image=${json.result}&name=ZeroYT7`)).json()
+	 var buffer = await (await fetch(`https://api.imgbb.com/1/upload?expiration=120&key=761ea2d5575581057a799d14e9c78e28&image=${json.result}&name=Katashi`)).json()
 	   await fs.writeFileSync(__path + '/tmp/neon.png', await getBuffer(buffer.data.url))
 	  
 	res.sendFile(__path + '/tmp/neon.png')
@@ -2057,7 +2146,7 @@ router.get('/kuis/caklontong', async (req, res, next) => {
         .then(data => {
         var result = data;
              res.json({
-             	author: 'ZeroYT7',
+             	author: 'Katashi',
                 result
              })
          })
@@ -2077,7 +2166,7 @@ router.get('/kuis/tebakgambar', async (req, res, next) => {
         .then(data => {
         var result = data;
              res.json({
-             	author: 'ZeroYT7',
+             	author: 'Katashi',
                 result
              })
          })
@@ -2099,7 +2188,7 @@ router.get('/news/cnn', async (req, res, next) => {
         .then(data => {
         var result = data;
              res.json({
-             	author: 'ZeroYT7',
+             	author: 'Katashi',
                  result
              })
          })
@@ -2122,7 +2211,7 @@ router.get('/news/cnbc', async (req, res, next) => {
         .then(data => {
         var result = data;
              res.json({
-             	author: 'ZeroYT7',
+             	author: 'Katashi',
                  result
              })
          })
@@ -2145,7 +2234,7 @@ router.get('/news/republika', async (req, res, next) => {
         .then(data => {
         var result = data;
              res.json({
-             	author: 'ZeroYT7',
+             	author: 'Katashi',
                  result
              })
          })
@@ -2168,7 +2257,7 @@ router.get('/news/tempo', async (req, res, next) => {
         .then(data => {
         var result = data;
              res.json({
-             	author: 'ZeroYT7',
+             	author: 'Katashi',
                  result
              })
          })
@@ -2191,7 +2280,7 @@ router.get('/news/antara', async (req, res, next) => {
         .then(data => {
         var result = data;
              res.json({
-             	author: 'ZeroYT7',
+             	author: 'Katashi',
                  result
              })
          })
@@ -2212,7 +2301,7 @@ router.get('/news/kumparan', async (req, res, next) => {
         .then(data => {
         var result = data;
              res.json({
-             	author: 'ZeroYT7',
+             	author: 'Katashi',
                  result
              })
          })
@@ -2235,7 +2324,7 @@ router.get('/filmapik/search', async (req, res, next) => {
         .then(data => {
         var result = data;
              res.json({
-             	author: 'ZeroYT7',
+             	author: 'Katashi',
                  result
              })
          })
@@ -2258,7 +2347,7 @@ router.get('/filmapik/kategori', async (req, res, next) => {
         .then(data => {
         var result = data;
              res.json({
-             	author: 'ZeroYT7',
+             	author: 'Katashi',
                  result
              })
          })
@@ -2281,7 +2370,7 @@ router.get('/filmapik/play', async (req, res, next) => {
         .then(data => {
         var result = data;
             res.json({
-             	author: 'ZeroYT7',
+             	author: 'Katashi',
                  result
              })
          })
@@ -2302,7 +2391,7 @@ router.get('/filmapik/terbaru', async (req, res, next) => {
         .then(data => {
         var result = data;
             res.json({
-             	author: 'ZeroYT7',
+             	author: 'Katashi',
                  result
              })
          })
@@ -2310,337 +2399,6 @@ router.get('/filmapik/terbaru', async (req, res, next) => {
          	res.sendFile(error)
 })
 })
-
-
-router.get('/lk21/search', async (req, res, next) => {
-        var apikeyInput = req.query.apikey,
-            film = req.query.film
-            
-	if(!apikeyInput) return res.json(loghandler.notparam)
-	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-    if (!film) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter film"})
-
-       fetch(encodeURI(`https://lk21-api-zahirr.herokuapp.com/search?query=${film}`))
-        .then(response => response.json())
-        .then(data => {
-        var result = data;
-             res.json({
-             	author: 'ZeroYT7',
-                 result
-             })
-         })
-         .catch(e => {
-         	res.sendFile(error)
-})
-})
-
-router.get('/playstore', async (req, res, next) => {
-        var apikeyInput = req.query.apikey,
-            namaapk = req.query.namaapk
-            
-	if(!apikeyInput) return res.json(loghandler.notparam)
-	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-    if (!namaapk) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter nama apk"})
-
-       fetch(encodeURI(`https://api.zeks.xyz/api/sgplay?apikey=Iyungputra&q=${namaapk}`))
-        .then(response => response.json())
-        .then(data => {
-        var result = data;
-             res.json({
-             	author: 'ZeroYT7',
-                 result
-             })
-         })
-         .catch(e => {
-         	res.sendFile(error)
-})
-})
-
-router.get('/happymod', async (req, res, next) => {
-        var apikeyInput = req.query.apikey,
-            namaapk = req.query.namaapk
-            
-	if(!apikeyInput) return res.json(loghandler.notparam)
-	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-    if (!namaapk) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter nama apk"})
-
-       fetch(encodeURI(`https://api.zeks.xyz/api/happymod?apikey=Iyungputra&q=${namaapk}`))
-        .then(response => response.json())
-        .then(data => {
-        var result = data;
-             res.json({
-             	author: 'ZeroYT7',
-                 result
-             })
-         })
-         .catch(e => {
-         	res.sendFile(error)
-})
-})
-
-router.get('/Gsm', async (req, res, next) => {
-        var apikeyInput = req.query.apikey,
-            ygdicarik = req.query.ygdicarik
-            
-	if(!apikeyInput) return res.json(loghandler.notparam)
-	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-    if (!ygdicarik) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter nama ygdicarik"})
-
-       fetch(encodeURI(`https://api.zeks.xyz/api/gsmArena?apikey=Iyungputra&q=${ygdicarik}`))
-        .then(response => response.json())
-        .then(data => {
-        var result = data;
-             res.json({
-             	author: 'ZeroYT7',
-                 result
-             })
-         })
-         .catch(e => {
-         	res.sendFile(error)
-})
-})
-
-router.get('/sticker', async (req, res, next) => {
-        var apikeyInput = req.query.apikey,
-            nama = req.query.nama
-            
-	if(!apikeyInput) return res.json(loghandler.notparam)
-	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-    if (!nama) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter nama"})
-
-       fetch(encodeURI(`https://api.zeks.xyz/api/searchsticker?apikey=Iyungputra&q=${nama}`))
-        .then(response => response.json())
-        .then(data => {
-        var result = data;
-             res.json({
-             	author: 'ZeroYT7',
-                 result
-             })
-         })
-         .catch(e => {
-         	res.sendFile(error)
-})
-})
-
-router.get('/sticker/line', async (req, res, next) => {
-        var apikeyInput = req.query.apikey,
-            link = req.query.link
-            
-	if(!apikeyInput) return res.json(loghandler.notparam)
-	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-    if (!link) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter link"})
-
-       fetch(encodeURI(`https://api.zeks.xyz/api/linesticker?link=${link}&apikey=Iyungputra`))
-        .then(response => response.json())
-        .then(data => {
-        var result = data;
-             res.json({
-             	author: 'ZeroYT7',
-                 result
-             })
-         })
-         .catch(e => {
-         	res.sendFile(error)
-})
-})
-
-router.get('/sticker/telegram', async (req, res, next) => {
-        var apikeyInput = req.query.apikey,
-            link = req.query.link
-            
-	if(!apikeyInput) return res.json(loghandler.notparam)
-	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-    if (!link) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter link"})
-
-       fetch(encodeURI(`https://api.zeks.xyz/api/telegram-sticker?apikey=Iyungputra&url={link}`))
-        .then(response => response.json())
-        .then(data => {
-        var result = data;
-             res.json({
-             	author: 'ZeroYT7',
-                 result
-             })
-         })
-         .catch(e => {
-         	res.sendFile(error)
-})
-})
-
-router.get('/jadwal/tv', async (req, res, next) => {
-        var apikeyInput = req.query.apikey,
-            channel = req.query.channel
-            
-	if(!apikeyInput) return res.json(loghandler.notparam)
-	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-    if (!channel) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter channel"})
-
-       fetch(encodeURI(`https://api.zeks.xyz/api/jadwaltv?channel=${channel}&apikey=Iyungputra`))
-        .then(response => response.json())
-        .then(data => {
-        var result = data;
-             res.json({
-             	author: 'ZeroYT7',
-                 result
-             })
-         })
-         .catch(e => {
-         	res.sendFile(error)
-})
-})
-
-router.get('/iguser', async (req, res, next) => {
-        var apikeyInput = req.query.apikey,
-            nama = req.query.nama
-            
-	if(!apikeyInput) return res.json(loghandler.notparam)
-	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-    if (!nama) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter nama"})
-
-       fetch(encodeURI(`https://api.zeks.xyz/api/iguser?apikey=Iyungputra&q=${nama}`))
-        .then(response => response.json())
-        .then(data => {
-        var result = data;
-             res.json({
-             	author: 'ZeroYT7',
-                 result
-             })
-         })
-         .catch(e => {
-         	res.sendFile(error)
-})
-})
-
-router.get('/lk21/terbaru', async (req, res, next) => {
-        var apikeyInput = req.query.apikey
-            
-	if(!apikeyInput) return res.json(loghandler.notparam)
-	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-
-       fetch(encodeURI(`https://lk21-api-zahirr.herokuapp.com/newupload`))
-        .then(response => response.json())
-        .then(data => {
-        var result = data;
-             res.json({
-             	author: 'ZeroYT7',
-                 result
-             })
-         })
-         .catch(e => {
-         	res.sendFile(error)
-})
-})
-
-
-router.get('/lk21/comingsoon', async (req, res, next) => {
-        var apikeyInput = req.query.apikey
-            
-	if(!apikeyInput) return res.json(loghandler.notparam)
-	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-
-       fetch(encodeURI(`https://lk21-api-zahirr.herokuapp.com/comingsoon`))
-        .then(response => response.json())
-        .then(data => {
-        var result = data;
-             res.json({
-             	author: 'ZeroYT7',
-                result
-             })
-         })
-         .catch(e => {
-         	res.sendFile(error)
-})
-})
-
-
-router.get('/lk21/tvseries', async (req, res, next) => {
-        var apikeyInput = req.query.apikey
-            
-	if(!apikeyInput) return res.json(loghandler.notparam)
-	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-
-       fetch(encodeURI(`https://lk21-api-zahirr.herokuapp.com/tv`))
-        .then(response => response.json())
-        .then(data => {
-        var result = data;
-             res.json({
-             	author: 'ZeroYT7',
-                 result
-             })
-         })
-         .catch(e => {
-         	res.sendFile(error)
-})
-})
-
-
-router.get('/lk21/year', async (req, res, next) => {
-        var apikeyInput = req.query.apikey,
-            tahun = req.query.tahun
-            
-	if(!apikeyInput) return res.json(loghandler.notparam)
-	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-    if (!tahun) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter tahun"})
-
-       fetch(encodeURI(`https://lk21-api-zahirr.herokuapp.com/year?year=${tahun}`))
-        .then(response => response.json())
-        .then(data => {
-        var result = data;
-             res.json({
-             	author: 'ZeroYT7',
-                 result
-             })
-         })
-         .catch(e => {
-         	res.sendFile(error)
-})
-})
-
-
-router.get('/lk21/country', async (req, res, next) => {
-        var apikeyInput = req.query.apikey,
-            negara = req.query.negara
-            
-	if(!apikeyInput) return res.json(loghandler.notparam)
-	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-    if (!negara) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter negara"})
-
-       fetch(encodeURI(`https://lk21-api-zahirr.herokuapp.com/country?country=${negara}`))
-        .then(response => response.json())
-        .then(data => {
-        var result = data;
-             res.json({
-             	author: 'ZeroYT7',                 result
-             })
-         })
-         .catch(e => {
-         	res.sendFile(error)
-})
-})
-
-
-router.get('/lk21/genre', async (req, res, next) => {
-        var apikeyInput = req.query.apikey,
-            tipe = req.query.tipe
-            
-	if(!apikeyInput) return res.json(loghandler.notparam)
-	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-    if (!tipe) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter tipe"})
-
-       fetch(encodeURI(`https://lk21-api-zahirr.herokuapp.com/genre?genre=${tipe}`))
-        .then(response => response.json())
-        .then(data => {
-        var result = data;
-             res.json({
-             	author: 'ZeroYT7',
-                 result
-             })
-         })
-         .catch(e => {
-         	res.sendFile(error)
-})
-})
-
-
 router.get('/textmaker/random', async (req, res, next) => {
         var theme = req.query.theme,
              text = req.query.text,
@@ -2815,96 +2573,6 @@ router.get('/textmaker/roses', async (req, res, next) => {
         }
 })
 
-router.get('/yutub/video', async (req, res, next) => {
-        var apikeyInput = req.query.apikey,
-            url = req.query.url
-            
-	if(!apikeyInput) return res.json(loghandler.notparam)
-	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-    if (!url) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter url"})
-
-       fetch(encodeURI(`https://api.zeks.xyz/api/ytmp4?url=${url}&apikey=alpin1234567`))
-        .then(response => response.json())
-        .then(data => {
-        var result = data;
-             res.json({
-             	author: 'ZeroYT7',
-                 result
-             })
-         })
-         .catch(e => {
-         	res.sendFile(error)
-})
-})
-
-
-router.get('/yutub/audio', async (req, res, next) => {
-        var apikeyInput = req.query.apikey,
-            url = req.query.url
-            
-	if(!apikeyInput) return res.json(loghandler.notparam)
-	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-    if (!url) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter url"})
-
-       fetch(encodeURI(`https://api.zeks.xyz/api/ytmp3?url=${url}&apikey=alpin1234567`))
-        .then(response => response.json())
-        .then(data => {
-        var result = data;
-             res.json({
-             	author: 'ZeroYT7',
-                 result
-             })
-         })
-         .catch(e => {
-         	res.sendFile(error)
-})
-})
-
-
-router.get('/ig/stalk', async (req, res, next) => {
-        var apikeyInput = req.query.apikey,
-            username = req.query.username
-            
-	if(!apikeyInput) return res.json(loghandler.notparam)
-	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-    if (!username) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter username"})
-
-       fetch(encodeURI(`https://mhankbarbar.herokuapp.com/api/stalk?username=${username}`))
-        .then(response => response.json())
-        .then(data => {
-        var result = data;
-             res.json({
-             	author: 'ZeroYT7',
-                 result
-            })
-         })
-         .catch(e => {
-         	res.sendFile(error)
-})
-})
-
-router.get('/comik', async (req, res, next) => {
-        var apikeyInput = req.query.apikey,
-            search = req.query.search
-            
-	if(!apikeyInput) return res.json(loghandler.notparam)
-	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-    if (!search) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter username"})
-
-       fetch(encodeURI(`https://api.zeks.xyz/api/bacakomik?apikey=alpin1234567&q=${search}`))
-        .then(response => response.json())
-        .then(data => {
-        var result = data;
-             res.json({
-             	author: 'ZeroYT7',
-                 result
-            })
-         })
-         .catch(e => {
-         	res.sendFile(error)
-})
-})
-
 router.get('/dork', async (req, res, next) => {
         var apikeyInput = req.query.apikey,
             dork = req.query.dork
@@ -2918,7 +2586,7 @@ router.get('/dork', async (req, res, next) => {
         .then(data => {
         var result = data;
              res.json({
-             	author: 'ZeroYT7',
+             	author: 'Katashi',
                  result
             })
          })
@@ -2940,7 +2608,7 @@ router.get('/pastebin', async (req, res, next) => {
         .then(data => {
         var result = data;
              res.json({
-             	author: 'ZeroYT7',
+             	author: 'Katashi',
                  result
             })
          })
@@ -2962,7 +2630,7 @@ router.get('/maker', async (req, res, next) => {
         .then(data => {
         var result = data;
              res.json({
-             	author: 'ZeroYT7',
+             	author: 'Katashi',
                  result
              })
          })
@@ -2985,7 +2653,7 @@ router.get('/maker2', async (req, res, next) => {
         .then(data => {
         var result = data;
              res.json({
-             	author: 'ZeroYT7',
+             	author: 'Katashi',
                  result
              })
          })
@@ -3008,7 +2676,7 @@ router.get('/maker3', async (req, res, next) => {
         .then(data => {
         var result = data;
              res.json({
-             	author: 'ZeroYT7',
+             	author: 'Katashi',
                  result
              })
          })
@@ -3031,7 +2699,7 @@ router.get('/maker4', async (rq, res, next) => {
         .then(data => {
         var result = data;
              res.json({
-             	author: 'ZeroYT7',
+             	author: 'Katashi',
                  result
              })
          })
@@ -3054,7 +2722,7 @@ router.get('/maker3d', async (req, res, next) => {
         .then(data => {
         var result = data;
              res.json({
-             	author: 'ZeroYT7',
+             	author: 'Katashi',
                  result
              })
          })
@@ -3077,7 +2745,7 @@ router.get('/maker3d/no2', async (req, res, next) => {
         .then(data => {
         var result = data;
              res.json({
-             	author: 'ZeroYT7',
+             	author: 'Katashi',
                  result
              })
          })
@@ -3100,7 +2768,7 @@ router.get('/maker3d/no3', async (req, res, next) => {
         .then(data => {
         var result = data;
              res.json({
-             	author: 'ZeroYT7',
+             	author: 'Katashi',
                  result
              })
          })
@@ -3123,7 +2791,7 @@ router.get('/maker3d/no4', async (req, res, next) => {
         .then(data => {
         var result = data;
              res.json({
-             	author: 'ZeroYT7',
+             	author: 'Katashi',
                  result
              })
          })
@@ -3131,30 +2799,6 @@ router.get('/maker3d/no4', async (req, res, next) => {
          	res.sendFile(error)
 })
 })
-
-
-router.get('/yutub/search', async (req, res, next) => {
-        var apikeyInput = req.query.apikey,
-            video = req.query.video
-            
-	if(!apikeyInput) return res.json(loghandler.notparam)
-	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-        if (!video) return res.json({ status : false, creator : `${creator}`, message : "Masukan parameter video"})
-
-       fetch(encodeURI(`https://api.zeks.xyz/api/yts?q=${video}&apikey=alpin1234567`))
-        .then(response => response.json())
-        .then(data => {
-        var result = data;
-             res.json({
-             	author: 'ZeroYT7',
-                 result
-             })
-         })
-         .catch(e => {
-         	res.sendFile(error)
-})
-})
-
 
 router.get('/maker/special/transformer', async (req, res, next) => {
         var apikeyInput = req.query.apikey,
@@ -3299,28 +2943,6 @@ router.get('/removebg', async (req, res, next) => {
    }
 })
 
-router.get('/simsimi', async (req, res, next) => {
-        var kata = req.query.kata,
-	apikeyInput = req.query.apikey;
-
-	if(!apikeyInput) return res.json(loghandler.notparam)
-	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-        if (!kata) return res.json(loghandler.notkata)
-
- try {
-       var json = await (await fetch(`https://api.zeks.xyz/api/simi?apikey=Iyungputra&text=${kata}`)).json()
-        var result = json.success
-             res.json({
-             	status : true,
-                creator : `${creator}`,
-                result : result
-             })
-} catch (e) {
-	console.log(e)
-    res.sendFile(error)
-   }
-})
-
 router.get('/binary', async (req, res, next) => {
 	var apikeyInput = req.query.apikey,
        text = req.query.encode
@@ -3458,85 +3080,6 @@ const repeat = (text, total) => {
        })
 })
 
-router.get('/reverse', async (req, res, next) => {
-       var text = req.query.text,
-	   apikeyInput = req.query.apikey;
-
-	if(!apikeyInput) return res.json(loghandler.notparam)
-	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-    if (!text) return res.json(loghandler.nottext)
-
- try {
-       var json = await (await fetch(`https://videfikri.com/api/hurufterbalik/?query=${text}`)).json()
-        var result = json.result.kata
-             res.json({
-             	status : true,
-                creator : `${creator}`,
-                result : result
-             })
-} catch (e) {
-    res.sendFile(error)
-   }
-})
-
-router.get('/spamcall', async (req, res, next) => {
-       var nomor = req.query.nomor,
-	   apikeyInput = req.query.apikey;
-
-	if(!apikeyInput) return res.json(loghandler.notparam)
-	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-        if (!nomor) return res.json(loghandler.notnomor)
-	if (isNaN(nomor)) return res.json(loghandler.number)
-
- try {
-       var json = await (await fetch(`https://mhankbarbar.herokuapp.com/api/spamcall?no=${nomor}`)).json()
-             res.json(json)
-
-} catch (e) {
-    res.sendFile(error)
-   }
-})
-
-router.get('/spamsms', async (req, res, next) => {
-       var nomor = req.query.nomor,
-              jumlah = req.query.jumlah,
-	         apikeyInput = req.query.apikey;
-
-	if(!apikeyInput) return res.json(loghandler.notparam)
-	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-    if (!nomor) return res.json(loghandler.notnomor)
-    if (isNaN(nomor)) return res.json(loghandler.number)
-    if (!jumlah) return res.json(loghandler.notjumlah)
-    if (isNaN(jumlah)) return res.json(loghandler.number)
-    if (jumlah > 20) return res.json({ message: `Maximal 20 Bang` })
-
- try {
-       var json = await (await fetch(`https://mhankbarbar.herokuapp.com/api/spamsms?no=${nomor}&jum=${jumlah}`)).json()
-         res.json(json)
-
-} catch (e) {
-    res.sendFile(error)
-   }
-})
-
-router.get('/bokep', async (req, res, next) => {
-     var apikeyInput = req.query.apikey;
-
-  if(!apikeyInput) return res.json(loghandler.notparam)
-  if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-
- try {
-         var json = await (await fetch(`https://mhankbarbar.herokuapp.com/api/pussy`)).json()
-	 var hasil = await getBuffer(json.result)
-            await fs.writeFileSync(__path + '/tmp/bokep.png', hasil)
-
-    res.sendFile(__path + '/tmp/bokep.png')
-  } catch (e) {
-  	console.log(e)
-    res.sendFile(error)
-      }
-})
-
 router.get('/googleimage', async (req, res, next) => {
 	var q = req.query.q,
      apikeyInput = req.query.apikey;
@@ -3589,54 +3132,6 @@ router.get('/md5', async (req, res, next) => {
        })
 })
 
-router.get('/tahta', async (req, res, next) => {
-   var text = req.query.text,
-          apikeyInput = req.query.apikey;
-
-  if(!apikeyInput) return res.json(loghandler.notparam)
-  if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-  if (!text) return res.json(loghandler.nottext)
-
-     var hasil = await (await fetch(`https://api.zeks.xyz/api/hartatahta?text=${text}&apikey=Iyungputra`)).buffer()
-       await fs.writeFileSync(__path + '/tmp/tahta.png', hasil)
-
-    res.sendFile(__path + '/tmp/tahta.png')
-})
-
-router.get('/customtahta', async (req, res, next) => {
-   var text = req.query.text,
-          apikeyInput = req.query.apikey;
-
-  if(!apikeyInput) return res.json(loghandler.notparam)
-  if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-  if (!text) return res.json(loghandler.nottext)
-
-     var hasil = await (await fetch(`https://api.zeks.xyz/api/tahta?text=${text}&apikey=Iyungputra`)).buffer()
-       await fs.writeFileSync(__path + '/tmp/cstahta.png', hasil)
-
-    res.sendFile(__path + '/tmp/cstahta.png')
-})
-
-router.get('/anime/random', async (req, res, next) => {
-     var apikeyInput = req.query.apikey;
-
-  if(!apikeyInput) return res.json(loghandler.notparam)
-  if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-
- try {
-         var json = await (await fetch(`https://api.fdci.se/rep.php?gambar=anime`)).json()
-         var body = JSON.parse(JSON.stringify(json))
-         var tada =  body[Math.floor(Math.random() * body.length)]
-	 var hasil = await getBuffer(tada)
-            await fs.writeFileSync(__path + '/tmp/anime.png', hasil)
-
-    res.sendFile(__path + '/tmp/anime.png')
-  } catch (e) {
-  	console.log(e)
-    res.sendFile(error)
-      }
-})
-
 router.get('/kpop/random', async (req, res, next) => {
      var apikeyInput = req.query.apikey;
 
@@ -3676,97 +3171,6 @@ router.get('/random/manga', async (req, res, next) => {
     res.sendFile(error)
       }
 })
-
-router.get('/triggered', async (req, res, next) => {
-       var img = req.query.img,
-	   apikeyInput = req.query.apikey;
-	
-  if(!apikeyInput) return res.json(loghandler.notparam)
-  if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-  if (!img) return res.json(loghandler.notimg)
-  if (!img.startsWith('http')) return res.json(loghandler.invalidLink)
-
- try {
-	 var result = await imageToBase64(`http://zekais-api.herokuapp.com/trigger?url=${img}`)
-	 var hasil = Buffer.from(result, 'base64')
-            await fs.writeFileSync(__path + '/tmp/trigger.gif', hasil)
-
-    res.sendFile(__path + '/tmp/trigger.gif')
-  } catch (e) {
-  	console.log(e)
-    res.sendFile(error)
-      }
-})
-
-router.get('/emojitopng', async (req, res, next) => {
-        var apikeyInput = req.query.apikey,
-               emoji = req.query.emoji;
-
-try {
-  if(!apikeyInput) return res.json(loghandler.notparam)
-  if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-  if (!emoji) return res.json(loghandler.notemoji)
-
-     var hasil = await (await fetch(`https://api.zeks.xyz/api/emoji-image?apikey=Iyungputra&emoji=${encodeURIComponent(emoji)}`)).buffer()
-        await fs.writeFileSync(__path + '/tmp/emojitopng.png', hasil)
-
-         res.sendFile(__path + '/tmp/emojitopng.png')
-} catch (e) {
-     console.log(e)
-	res.sendFile(error)   }
-})
-
-router.get('/brainly', async (req, res, next) => {
-        var apikeyInput = req.query.apikey,
-               text = req.query.text;
-
-try {
-  if(!apikeyInput) return res.json(loghandler.notparam)
-  if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-  if (!text) return res.json(loghandler.nottext)
-
-     var json = await (await fetch(`https://api.zeks.xyz/api/brainly?apikey=Iyungputra&q=${text}&count=5`)).json()
-       res.json(json)
-     
-} catch (e) {
-     console.log(e)
-	res.sendFile(error)
-   }
-})
-
-router.get('/pantun', async (req, res, next) => {
-        var apikeyInput = req.query.apikey;
-
-try {
-  if(!apikeyInput) return res.json(loghandler.notparam)
-  if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-
-     var json = await (await fetch(`https://api.zeks.xyz/api/pantun?apikey=Iyungputra`)).json()
-         res.json(json)
-
-} catch (e) {
-     console.log(e)
-	res.sendFile(error)
-   }
-})
-
-router.get('/memeindo', async (req, res, next) => {
-        var apikeyInput = req.query.apikey;
-
-try {
-  if(!apikeyInput) return res.json(loghandler.notparam)
-  if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-
-     var json = await (await fetch(`https://api.zeks.xyz/api/memeindo?apikey=Iyungputra`)).json()
-     var hasil = await getBuffer(json.result)
-       await fs.writeFileSync(__path + '/tmp/memeindo.png', hasil)
-
-         res.sendFile(__path + '/tmp/memeindo.png')
-} catch (e) {
-     console.log(e)
-	res.sendFile(error)
-   }
-})	
 
 router.get('/artinama', async (req, res, next) => {
         var apikeyInput = req.query.apikey,
@@ -3851,291 +3255,13 @@ router.get('/kuis/caklontong', async (req, res, next) => {
         .then(data => {
         var result = data;
              res.json({
-             	author: 'ZeroYT7',
+             	author: 'Katashi',
                 result
              })
          })
          .catch(e => {
          	res.sendFile(error)
 })
-})
-
-router.get('/asupan', async (req, res, next) => {
-        var apikeyInput = req.query.apikey;
-
-try {
-  if(!apikeyInput) return res.json(loghandler.notparam)
-  if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-
-     var json = await (await fetch(`http://zekais-api.herokuapp.com/ptlvid`)).json()
-         res.json(json)
-
-} catch (e) {
-     console.log(e)
-	res.sendFile(error)
-   }
-})
-
-router.get('/cerpen', async (req, res, next) => {
-        var apikeyInput = req.query.apikey;
-
-try {
-  if(!apikeyInput) return res.json(loghandler.notparam)
-  if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-
-     var json = await (await fetch(`http://zekais-api.herokuapp.com/cerpen`)).json()
-         res.json({
-		 status : true,
-		 creator : creator,
-		 judul : json.title,
-		 pengarang : json.pengarang,
-		 kategori : json.category,
-		 cerpen : json.post
-      })
-
-} catch (e) {
-     console.log(e)
-	res.sendFile(error)
-   }
-})
-
-router.get('/mediafire', async (req, res, next) => {
-        var apikeyInput = req.query.apikey,
-	    url = req.query.url;
-
-try {
-  if(!apikeyInput) return res.json(loghandler.notparam)
-  if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-  if (!url) return res.json(loghandler.noturl)
-  if (!url.startsWith('http')) return res.json(loghandler.invalidLink)
-
-     var json = await (await fetch(`https://api.zeks.xyz/api/mediafire?apikey=Iyungputra&url=${url}`)).json()
-         res.json(json)
-
-} catch (e) {
-     console.log(e)
-	res.sendFile(error)
-   }
-})
-
-router.get('/tts', async (req, res, next) => {
-       var text = req.query.text,
-	   lang = req.query.lang,
-	   apikeyInput = req.query.apikey;
-
-  if(!apikeyInput) return res.json(loghandler.notparam)
-  if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-  if (!text) return res.json(loghandler.nottext)
-  if (!lang) return res.json(loghandler.notlang)
-  if (lang > 4) return res.json({ error : `Kode bahasa tidak valid!` })
-
-  try {
-         var ress = await imageToBase64(`http://zekais-api.herokuapp.com/speech?lang=${lang}&text=${text}`)
-	 var tts = Buffer.from(ress, 'base64')
-	   await fs.writeFileSync(__path + '/tmp/tts.opus', tts)
-
-       res.sendFile(__path + '/tmp/tts.opus')
-  } catch (e) {
-	console.log(e)
-	  res.sendFile(error)
-     }
-})
-
-router.get('/darkjokes', async (req, res, next) => {
-        var apikeyInput = req.query.apikey;
-
-try {
-  if(!apikeyInput) return res.json(loghandler.notparam)
-  if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-
-     var json = await (await fetch(`https://api.zeks.xyz/api/darkjokes?apikey=Iyungputra`)).json()
-     var hasil = await getBuffer(json.result)
-       await fs.writeFileSync(__path + '/tmp/darkjokes.png', hasil)
-
-         res.sendFile(__path + '/tmp/darkjokes.png')
-} catch (e) {
-     console.log(e)
-	res.sendFile(error)
-   }
-})
-
-router.get('/splaybutton', async (req, res, next) => {
-        var apikeyInput = req.query.apikey,
-	    text = req.query.text;
-
-try {
-  if(!apikeyInput) return res.json(loghandler.notparam)
-  if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-  if (!text) return res.json(loghandler.nottext)
-
-     var hasil = await getBuffer(`https://api.zeks.xyz/api/splaybutton?text=${text}&apikey=Iyungputra`)
-       await fs.writeFileSync(__path + '/tmp/playbutton.png', hasil)
-
-         res.sendFile(__path + '/tmp/playbutton.png')
-} catch (e) {
-     console.log(e)
-	res.sendFile(error)
-   }
-})
-
-router.get('/gplaybutton', async (req, res, next) => {
-        var apikeyInput = req.query.apikey,
-	    text = req.query.text;
-
-try {
-  if(!apikeyInput) return res.json(loghandler.notparam)
-  if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-  if (!text) return res.json(loghandler.nottext)
-
-     var hasil = await getBuffer(`https://api.zeks.xyz/api/gplaybutton?text=${text}&apikey=Iyungputra`)
-       await fs.writeFileSync(__path + '/tmp/playbutton2.png', hasil)
-
-         res.sendFile(__path + '/tmp/playbutton2.png')
-} catch (e) {
-     console.log(e)
-	res.sendFile(error)
-   }
-})
-
-router.get('/textpantai', async (req, res, next) => {
-        var apikeyInput = req.query.apikey,
-	    text = req.query.text;
-
-try {
-  if(!apikeyInput) return res.json(loghandler.notparam)
-  if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-  if (!text) return res.json(loghandler.nottext)
-
-     var hasil = await getBuffer(`https://api.zeks.xyz/api/sandw?apikey=Iyungputra&text=${text}`)
-       await fs.writeFileSync(__path + '/tmp/pantai.png', hasil)
-
-         res.sendFile(__path + '/tmp/pantai.png')
-} catch (e) {
-     console.log(e)
-	res.sendFile(error)
-   }
-})
-
-router.get('/textsalju', async (req, res, next) => {
-        var apikeyInput = req.query.apikey,
-	    t1 = req.query.t1,
-	    t2 = req.query.t2;
-
-try {
-  if(!apikeyInput) return res.json(loghandler.notparam)
-  if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-  if (!t1) return res.json(loghandler.nottext)
-  if (!t2) return res.json(loghandler.nottext2)
-
-     var json = await (await fetch(`https://api.zeks.xyz/api/snowwrite?text1=${t1}&text2=${t2}&apikey=Iyungputra`)).json()
-       await fs.writeFileSync(__path + '/tmp/salju.png', await getBuffer(json.result))
-
-         res.sendFile(__path + '/tmp/salju.png')
-} catch (e) {
-     console.log(e)
-	res.sendFile(error)
-   }
-})
-
-router.get('/alay', async (req, res, next) => {
-        var kata = req.query.kata,
-	    apikeyInput = req.query.apikey;
-
-try {
-  if(!apikeyInput) return res.json(loghandler.notparam)
-  if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-  if (!kata) return res.json(loghandler.notkata)
-      var json = await (await fetch(`https://api.terhambar.com/bpk?kata=${kata}`)).json()
-         res.json({
-		 status : true,
-		 creator : creator,
-		 result : json.text
-	   })
-
-} catch (e) {
-     console.log(e)
-	res.sendFile(error)
-   }
-})
-
-router.get('/firework', async (req, res, next) => {
-        var apikeyInput = req.query.apikey,
-	    text = req.query.text;
-
-try {
-  if(!apikeyInput) return res.json(loghandler.notparam)
-  if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-  if (!text) return res.json(loghandler.nottext)
-
-     var hasil = await getBuffer(`https://api.zeks.xyz/api/tfire?text=${text}&apikey=Iyungputra`)
-       await fs.writeFileSync(__path + '/tmp/firework.png', hasil)
-
-         res.sendFile(__path + '/tmp/firework.png')
-} catch (e) {
-     console.log(e)
-	res.sendFile(error)
-   }
-})
-
-router.get('/retro', async (req, res, next) => {
-        var apikeyInput = req.query.apikey,
-	    t1 = req.query.t1,
-	    t2 = req.query.t2,
-	    t3 = req.query.t3;
-
-try {
-  if(!apikeyInput) return res.json(loghandler.notparam)
-  if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-  if (!t1) return res.json(loghandler.nottext)
-  if (!t2) return res.json(loghandler.nottext2)
-  if (!t3) return res.json(loghandler.nottext3)
-
-     var json = await (await fetch(`https://api.zeks.xyz/api/retro?text1=${t1}&text2=${t2}&text3=${t3}&apikey=Iyungputra`)).json()
-       await fs.writeFileSync(__path + '/tmp/retro.png', await getBuffer(json.result))
-
-         res.sendFile(__path + '/tmp/retro.png')
-} catch (e) {
-     console.log(e)
-	res.sendFile(error)
-   }
-})
-
-router.get('/matrix', async (req, res, next) => {
-        var apikeyInput = req.query.apikey,
-	    text = req.query.text;
-
-try {
-  if(!apikeyInput) return res.json(loghandler.notparam)
-  if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-  if (!text) return res.json(loghandler.nottext)
-
-     var hasil = await getBuffer(`https://api.zeks.xyz/api/matrix?apikey=Iyungputra&text=${text}`)
-       await fs.writeFileSync(__path + '/tmp/matrix.png', hasil)
-
-         res.sendFile(__path + '/tmp/matrix.png')
-} catch (e) {
-     console.log(e)
-	res.sendFile(error)
-   }
-})
-
-router.get('/text3d', async (req, res, next) => {
-        var apikeyInput = req.query.apikey,
-	    text = req.query.text;
-
-try {
-  if(!apikeyInput) return res.json(loghandler.notparam)
-  if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-  if (!text) return res.json(loghandler.nottext)
-
-     var hasil = await getBuffer(`https://api.zeks.xyz/api/text3dbox?apikey=Iyungputra&text=${text}`)
-       await fs.writeFileSync(__path + '/tmp/3d.png', hasil)
-
-         res.sendFile(__path + '/tmp/3d.png')
-} catch (e) {
-     console.log(e)
-	res.sendFile(error)
-   }
 })
 
 router.get('/kuis/family100', async (req, res, next) => {
@@ -4155,117 +3281,6 @@ router.get('/kuis/family100', async (req, res, next) => {
          .catch(e => {
          	res.json(loghandler.error)
 })
-})
-
-router.get('/pornlogo', async (req, res, next) => {
-        var apikeyInput = req.query.apikey,
-	    t1 = req.query.t1,
-	    t2 = req.query.t2;
-
-try {
-  if(!apikeyInput) return res.json(loghandler.notparam)
-  if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-  if (!t1) return res.json(loghandler.nottext)
-  if (!t2) return res.json(loghandler.nottext2)
-
-     var hasil = await getBuffer(`https://api.zeks.xyz/api/phlogo?text1=${t1}&text2=${t2}&apikey=Iyungputra`)
-       await fs.writeFileSync(__path + '/tmp/pornhub.png', hasil)
-
-         res.sendFile(__path + '/tmp/pornhub.png')
-} catch (e) {
-     console.log(e)
-	res.sendFile(error)
-   }
-})
-
-router.get('/marvel', async (req, res, next) => {
-        var apikeyInput = req.query.apikey,
-	    t1 = req.query.t1,
-	    t2 = req.query.t2;
-try {
-  if(!apikeyInput) return res.json(loghandler.notparam)
-  if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-  if (!t1) return res.json(loghandler.nottext)
-  if (!t2) return res.json(loghandler.nottext2)
-
-     var hasil = await getBuffer(`https://api.zeks.xyz/api/marvellogo?text1=${t1}&text2=${t2}&apikey=Iyungputra`)
-       await fs.writeFileSync(__path + '/tmp/marvel.png', hasil)
-
-         res.sendFile(__path + '/tmp/marvel.png')
-} catch (e) {
-     console.log(e)
-	res.sendFile(error)
-   }
-})
-
-router.get('/blackpink', async (req, res, next) => {
-        var apikeyInput = req.query.apikey,
-	    text = req.query.text;
-
-try {
-  if(!apikeyInput) return res.json(loghandler.notparam)
-  if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-  if (!text) return res.json(loghandler.nottext)
-
-     var hasil = await getBuffer(`https://api.zeks.xyz/api/logobp?text=${text}&apikey=Iyungputra`)
-       await fs.writeFileSync(__path + '/tmp/bp.png', hasil)
-
-         res.sendFile(__path + '/tmp/bp.png')
-} catch (e) {
-     console.log(e)
-	res.sendFile(error)
-   }
-})
-
-router.get('/avengers', async (req, res, next) => {
-        var apikeyInput = req.query.apikey,
-	    t1 = req.query.t1,
-	    t2 = req.query.t2;
-try {
-  if(!apikeyInput) return res.json(loghandler.notparam)
-  if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-  if (!t1) return res.json(loghandler.nottext)
-  if (!t2) return res.json(loghandler.nottext2)
-
-     var hasil = await getBuffer(`https://api.zeks.xyz/api/logoaveng?text1=${t1}&text2=${t2}&apikey=Iyungputra`)
-       await fs.writeFileSync(__path + '/tmp/avenger.png', hasil)
-
-         res.sendFile(__path + '/tmp/avenger.png')
-} catch (e) {
-     console.log(e)
-	res.sendFile(error)
-   }
-})
-
-router.get('/thunder', async (req, res, next) => {
-        var apikeyInput = req.query.apikey,
-	    text = req.query.text;
-
-try {
-  if(!apikeyInput) return res.json(loghandler.notparam)
-  if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-  if (!text) return res.json(loghandler.nottext)
-
-     var hasil = await getBuffer(`https://api.zeks.xyz/api/thundertext?text=${text}&apikey=Iyungputra`)
-       await fs.writeFileSync(__path + '/tmp/thunder.png', hasil)
-
-         res.sendFile(__path + '/tmp/thunder.png')
-} catch (e) {
-     console.log(e)
-	res.sendFile(error)
-   }
-})
-
-router.get('/news', async (req, res) => {
-     var apikeyInput = req.query.apikey;
-
-  if(!apikeyInput) return res.json(loghandler.notparam)
-  if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-
-	var data = fs.readFileSync(__path + '/lib/utils/news.js')
-	var json = JSON.parse(data)
-
-     res.json(json)
 })
 
 router.get('/ssweb', async (req, res, next) => {
@@ -4475,91 +3490,6 @@ router.get('/futureneon', async (req, res, next) => {
        }
 })
 
-router.get('/spotify', async (req, res, next) => {
-        var apikeyInput = req.query.apikey,
-	    q = req.query.q;
-
-try {
-  if(!apikeyInput) return res.json(loghandler.notparam)
-  if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-  if (!q) return res.json(loghandler.notquery)
-
-     var json = await (await fetch(`https://api.zeks.xyz/api/spotify?apikey=Iyungputra&q=${q}`)).json()
-
-     res.json(json)
-} catch (e) {
-     console.log(e)
-	res.sendFile(error)
-   }
-})
-
-router.get('/instagram', async (req, res, next) => {
-        var apikeyInput = req.query.apikey,
-	    url = req.query.url;
-
-try {
-  if(!apikeyInput) return res.json(loghandler.notparam)
-  if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-  if (!url) return res.json(loghandler.noturl)
-  if (!url.startsWith('http')) return res.json(logahndler.invalidLink)
-
-     var json = await (await fetch(`https://api-anoncybfakeplayer.herokuapp.com/igdown?url=${url}`)).json()
-
-     res.json(json)
-} catch (e) {
-     console.log(e)
-	res.sendFile(error)
-   }
-})
-
-router.get('/towebp', async (req, res, next) => {
-        var apikeyInput = req.query.apikey,
-	    url = req.query.url;
-
-try {
-  if(!apikeyInput) return res.json(loghandler.notparam)
-  if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-  if (!url) return res.json(loghandler.noturl)
-  if (!url.startsWith('http')) return res.json(logahndler.invalidLink)
-
-     var json = await (await fetch(`http://zekais-api.herokuapp.com/pngtowebp?url=${url}`)).json()
-
-     res.json({
-	     status : true,
-	     creator : creator,
-	     result : json.result
-       })
-} catch (e) {
-     console.log(e)
-	res.sendFile(error)
-   }
-})
-
-router.get('/math', async (req, res, next) => {
-        var apikeyInput = req.query.apikey,
-	    mode = req.query.mode;
-
-try {
-  if(!apikeyInput) return res.json(loghandler.notparam)
-  if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-  if (!mode) return res.json({ message : `Silahkan masukan modenya,, Mode tersedia : 1. very_easy, 2. easy, 3. medium, 4. hard, 5. extreme, 6. impossible` })
-
-     var json = await (await fetch(`http://zekais-api.herokuapp.com/math?mode=${mode}`)).json()
-
-     res.json({
-	     status : true,
-	     creator : creator,
-	     info : json.message,
-	     soal : json.soal,
-	     jawaban : json.jawaban,
-	     poin : 25000
-       })
-} catch (e) {
-     console.log(e)
-	res.sendFile(error)
-   }
-})
-
 router.get('/math2', async (req, res, next) => {
         var apikeyInput = req.query.apikey;
 
@@ -4687,51 +3617,6 @@ try {
              text : text,
              code : encode
         })
-} catch (e) {
-     console.log(e)
-	res.sendFile(error)
-   }
-})
-
-router.get('/bucin', async (req, res, next) => {
-	    apikeyInput = req.query.apikey;
-
-try {
-  if(!apikeyInput) return res.json(loghandler.notparam)
-  if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-
-     var json = await (await fetch(`http://zekais-api.herokuapp.com/bucin`)).json()
-
-     res.json({
-	     status : true,
-	     creator : creator,
-	     bucin : json.result
-       })
-} catch (e) {
-     console.log(e)
-	res.sendFile(error)
-   }
-})
-
-router.get('/memegen', async (req, res, next) => {
-  var img = req.query.img,
-      t1 = req.query.t1,
-      t2 = req.query.t2;
-      apikeyInput = req.query.apikey;
-
-try {
-  if(!apikeyInput) return res.json(loghandler.notparam)
-  if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-  if(!img) return res.json(loghandler.notimg)
-  if(!t1) return res.json(loghandler.nottext)
-  if(!t2) return res.json(loghandler.nottext2)
-  if (!img.startsWith('http')) return res.json(loghandler.invalidLink)
-
-     var hasil = await (await fetch(`http://zekais-api.herokuapp.com/mgen?text1=${t1}&text2=${t2}&url=${img}`)).buffer()
-   await fs.writeFileSync(__path + '/tmp/memegen.png', hasil)
-
-     res.sendFile(__path + '/tmp/memegen.png')
-     
 } catch (e) {
      console.log(e)
 	res.sendFile(error)

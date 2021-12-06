@@ -920,6 +920,200 @@ router.get("/search/muihalal", async(req, res, next) => {
 		})
 })
 
+router.get('/search/doujin', async (req, res, next) => {
+         apikeyInput = req.query.apikey
+            query = req.query.query;
+  if(!query) return res.json(loghandler.notquery)
+	if(!apikeyInput) return res.json(loghandler.notparam)
+	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
+
+       fetch(encodeURI(`https://tyz-api.herokuapp.com/nsfw/doujindesuSearch?query=${query}`))
+        .then(response => response.json())
+        .then(data => {
+        var result = data;
+             res.json({
+             	author: 'Katashi',
+                result
+             })
+         })
+         .catch(e => {
+         	res.sendFile(error)
+})
+})
+
+router.get('/search/nhpopular', async (req, res, next) => {
+         apikeyInput = req.query.apikey
+	if(!apikeyInput) return res.json(loghandler.notparam)
+	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
+
+       fetch(encodeURI(`https://api.ichikaa.xyz/api/nhpopular`))
+        .then(response => response.json())
+        .then(data => {
+        var result = data;
+             res.json({
+             	author: 'Katashi',
+                result
+             })
+         })
+         .catch(e => {
+         	res.sendFile(error)
+})
+})
+
+router.get('/maker/nulis23', async (req, res, next) => {
+         apikeyInput = req.query.apikey;
+   query = req.query.query;
+  if(!query) return res.json(loghandler.notquery)
+	if (!apikeyInput) return res.json(loghandler.notparam)
+		if (apikeyInput !== `${key}`) return res.sendFile(invalidKey)
+
+       fetch(encodeURI(`https://viko-api.herokuapp.com/api/textmaker/nulis2?apikey=katashi&query=${query}`))
+        .then(response => response.json())
+        .then(data => {
+        var result = data.result;
+             res.json({
+                 creator : viko,
+                 result
+             })
+         })
+         .catch(e => {
+			console.log('Error :', color(e, 'red'))
+			res.sendFile(error)
+		})
+})
+
+router.get('/search/pornhub', async (req, res, next) => {
+         apikeyInput = req.query.apikey;
+   query = req.query.query;
+  if(!query) return res.json(loghandler.notquery)
+	if (!apikeyInput) return res.json(loghandler.notparam)
+		if (apikeyInput !== `${key}`) return res.sendFile(invalidKey)
+
+       fetch(encodeURI(`https://kocakz.herokuapp.com/api/media/pornhub/search?query=${query}`))
+        .then(response => response.json())
+        .then(data => {
+        var result = data.result;
+             res.json({
+                 creator : `${creator}`,
+                 result
+             })
+         })
+         .catch(e => {
+			console.log('Error :', color(e, 'red'))
+			res.sendFile(error)
+		})
+})
+
+router.get('/search/xvideos', async (req, res, next) => {
+         apikeyInput = req.query.apikey;
+   query = req.query.query;
+  if(!query) return res.json(loghandler.notquery)
+	if (!apikeyInput) return res.json(loghandler.notparam)
+		if (apikeyInput !== `${key}`) return res.sendFile(invalidKey)
+
+       fetch(encodeURI(`https://kocakz.herokuapp.com/api/media/xvideo/search?query=${query}`))
+        .then(response => response.json())
+        .then(data => {
+        var result = data.result;
+             res.json({
+                 creator : `${creator}`,
+                 result
+             })
+         })
+         .catch(e => {
+			console.log('Error :', color(e, 'red'))
+			res.sendFile(error)
+		})
+})
+
+router.get('/search/xnxx', async (req, res, next) => {
+         apikeyInput = req.query.apikey;
+   query = req.query.query;
+  if(!query) return res.json(loghandler.notquery)
+	if (!apikeyInput) return res.json(loghandler.notparam)
+		if (apikeyInput !== `${key}`) return res.sendFile(invalidKey)
+
+       fetch(encodeURI(`https://kocakz.herokuapp.com/api/media/xnxx/search?query=${query}`))
+        .then(response => response.json())
+        .then(data => {
+        var result = data.result;
+             res.json({
+                 creator : `${creator}`,
+                 result
+             })
+         })
+         .catch(e => {
+			console.log('Error :', color(e, 'red'))
+			res.sendFile(error)
+		})
+})
+
+router.get('/download/xnxx', async (req, res, next) => {
+         apikeyInput = req.query.apikey;
+   url = req.query.url
+  if (!url) return res.json(loghandler.noturl)
+	if (!apikeyInput) return res.json(loghandler.notparam)
+		if (apikeyInput !== `${key}`) return res.sendFile(invalidKey)
+
+       fetch(encodeURI(`https://kocakz.herokuapp.com/api/media/xvideo/detail?url=${url}`))
+        .then(response => response.json())
+        .then(data => {
+        var result = data.result;
+             res.json({
+                 creator : `${creator}`,
+                 result
+             })
+         })
+         .catch(e => {
+			console.log('Error :', color(e, 'red'))
+			res.sendFile(error)
+		})
+})
+
+router.get('/download/xvideos', async (req, res, next) => {
+         apikeyInput = req.query.apikey;
+   url = req.query.url
+  if (!url) return res.json(loghandler.noturl)
+	if (!apikeyInput) return res.json(loghandler.notparam)
+		if (apikeyInput !== `${key}`) return res.sendFile(invalidKey)
+
+       fetch(encodeURI(`https://kocakz.herokuapp.com/api/media/pornhub/detail?url=${url}`))
+        .then(response => response.json())
+        .then(data => {
+        var result = data.res;
+             res.json({
+                 creator : `${creator}`,
+                 result
+             })
+         })
+         .catch(e => {
+			console.log('Error :', color(e, 'red'))
+			res.sendFile(error)
+		})
+})
+
+router.get('/download/pornhub', async (req, res, next) => {
+         apikeyInput = req.query.apikey;
+   url = req.query.url
+  if (!url) return res.json(loghandler.noturl)
+	if (!apikeyInput) return res.json(loghandler.notparam)
+		if (apikeyInput !== `${key}`) return res.sendFile(invalidKey)
+
+       fetch(encodeURI(`https://kocakz.herokuapp.com/api/media/pornhub/detail?url=${url}`))
+        .then(response => response.json())
+        .then(data => {
+        var result = data.res;
+             res.json({
+                 creator : `${creator}`,
+                 result
+             })
+         })
+         .catch(e => {
+			console.log('Error :', color(e, 'red'))
+			res.sendFile(error)
+		})
+})
+
 router.get("/search/jalantikus", async(req, res, next) => {
   apikeyInput = req.query.apikey;
    query = req.query.query;
@@ -1969,7 +2163,6 @@ router.get('/kodepos', async (req, res, next) => {
          	res.sendFile(error)
 })
 })
-
 
 router.get('/infocuaca', async (req, res, next) => {
         var apikeyInput = req.query.apikey,

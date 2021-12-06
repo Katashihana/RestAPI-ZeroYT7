@@ -68,7 +68,14 @@ var {
   fbdown,
   twitter,
 } = require("./../lib/downloadig2");
-
+var {
+  asahotakasahotak,
+  family100,
+  siapakah,
+  siapakah2,
+  susunkata,
+  tekateki,
+} = require("./../lib/scrapegame");
 var cookie = "HSID=A7EDzLn3kae2B1Njb;SSID=AheuwUjMojTWvA5GN;APISID=cgfXh13rQbb4zbLP/AlvlPJ2xBJBsykmS_;SAPISID=m82rJG4AC9nxQ5uG/A1FotfA_gi9pvo91C;__Secure-3PAPISID=m82rJG4AC9nxQ5uG/A1FotfA_gi9pvo91C;VISITOR_INFO1_LIVE=RgZLnZtCoPU;LOGIN_INFO=AFmmF2swRQIhAOXIXsKVou2azuz-kTsCKpbM9szRExAMUD-OwHYiuB6eAiAyPm4Ag3O9rbma7umBK-AG1zoGqyJinh4ia03csp5Nkw:QUQ3MjNmeXJ0UHFRS3dzaTNGRmlWR2FfMDRxa2NRYTFiN3lfTEdOVTc4QUlwbUI4S2dlVngxSG10N3ZqcHZwTHBKano5SkN2dDlPSkhRMUtReE42TkhYeUVWS3kyUE1jY2I1QzA1MDZBaktwd1llWU9lOWE4NWhoZV92aDkxeE9vMTNlcG1uMU9rYjhOaDZWdno2ZzN3TXl5TVNhSjNBRnJaMExrQXpoa2xzRVUteFNWZDI5S0Fn;PREF=app=desktop&f4=4000000&al=id;SID=2wezCMTUkWN3YS1VmS_DXaEU84J0pZIQdemM8Zry-uzWm8y1njBpLTOpxSfN-EaYCRSiDg.;YSC=HCowA1fmvzo;__Secure-3PSID=2wezCMTUkWN3YS1VmS_DXaEU84J0pZIQdemM8Zry-uzWm8y1dajgWzlBh9TgKapGOwuXfA.;SIDCC=AJi4QfFK0ri9fSfMjMQ4tOJNp6vOb9emETXB_nf2S05mvr2jBlmeEvlSsQSzPMuJl_V0wcbL1r8;__Secure-3PSIDCC=AJi4QfGeWHx-c4uTpU1rXCciO1p0s2fJWU07KrkZhWyD1Tqi8LyR-kHuBwHY9mViVYu1fRh2PA";
 
 // loghandler :
@@ -1253,6 +1260,101 @@ router.get("/search/servermc", async(req, res, next) => {
 			res.sendFile(error)
 		})
 })
+
+router.get("/game/tekateki", async(req, res, next) => {
+  apikeyInput = req.query.apikey;
+  if (!apikeyInput) return res.json(loghandler.notparam)
+		if (apikeyInput !== `${key}`) return res.sendFile(invalidKey)
+  tekateki()
+    .then((data) => {
+      res.json(data)
+    })
+  .catch(e => {
+			console.log('Error :', color(e, 'red'))
+			res.sendFile(error)
+		})
+})
+
+router.get("/game/asahotak", async(req, res, next) => {
+  apikeyInput = req.query.apikey;
+  if (!apikeyInput) return res.json(loghandler.notparam)
+		if (apikeyInput !== `${key}`) return res.sendFile(invalidKey)
+  asahotak()
+    .then((data) => {
+      res.json(data)
+    })
+  .catch(e => {
+			console.log('Error :', color(e, 'red'))
+			res.sendFile(error)
+		})
+})
+
+router.get("/game/susunkata", async(req, res, next) => {
+  apikeyInput = req.query.apikey;
+  if (!apikeyInput) return res.json(loghandler.notparam)
+		if (apikeyInput !== `${key}`) return res.sendFile(invalidKey)
+  susunkata()
+    .then((data) => {
+      res.json(data)
+    })
+  .catch(e => {
+			console.log('Error :', color(e, 'red'))
+			res.sendFile(error)
+		})
+})
+
+router.get("/game/family1002", async(req, res, next) => {
+  apikeyInput = req.query.apikey;
+  if (!apikeyInput) return res.json(loghandler.notparam)
+		if (apikeyInput !== `${key}`) return res.sendFile(invalidKey)
+  family100()
+    .then((data) => {
+      res.json(data)
+    })
+  .catch(e => {
+			console.log('Error :', color(e, 'red'))
+			res.sendFile(error)
+		})
+})
+
+router.get('/game/tebakgambar2', async (req, res, next) => {
+         apikeyInput = req.query.apikey
+	if(!apikeyInput) return res.json(loghandler.notparam)
+	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
+
+       fetch(encodeURI(`https://katashi-api.herokuapp.com/api/kuis/tebakgambar?apikey=Alphabot`))
+        .then(response => response.json())
+        .then(data => {
+        var result = data.result;
+             res.json({
+             	author: 'Katashi',
+                result
+             })
+         })
+         .catch(e => {
+         	res.sendFile(error)
+})
+})
+
+router.get('/game/caklontong2', async (req, res, next) => {
+         apikeyInput = req.query.apikey
+	if(!apikeyInput) return res.json(loghandler.notparam)
+	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
+
+       fetch(encodeURI(`https://katashi-api.herokuapp.com/api/kuis/caklontong?apikey=Alphabot`))
+        .then(response => response.json())
+        .then(data => {
+        var result = data.result;
+             res.json({
+             	author: 'Katashi',
+                result
+             })
+         })
+         .catch(e => {
+         	res.sendFile(error)
+})
+})
+
 router.get('/infogempa', async (req, res, next) => {
 	        var apikeyInput = req.query.apikey
 

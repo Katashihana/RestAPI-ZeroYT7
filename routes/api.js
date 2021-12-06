@@ -926,6 +926,22 @@ router.get("/search/jalantikus", async(req, res, next) => {
 		})
 })
 
+router.get("/search/mcpedl", async(req, res, next) => {
+  apikeyInput = req.query.apikey;
+   query = req.query.query;
+  if(!query) return res.json(loghandler.notquery)
+  if (!apikeyInput) return res.json(loghandler.notparam)
+		if (apikeyInput !== `${key}`) return res.sendFile(invalidKey)
+  mcpedl(query)
+    .then((data) => {
+      res.json(data)
+    })
+  .catch(e => {
+			console.log('Error :', color(e, 'red'))
+			res.sendFile(error)
+		})
+})
+
 router.get("/search/layarkaca", async(req, res, next) => {
   apikeyInput = req.query.apikey;
    query = req.query.query;
@@ -946,7 +962,7 @@ router.get("/search/hoax", async(req, res, next) => {
   apikeyInput = req.query.apikey;
   if (!apikeyInput) return res.json(loghandler.notparam)
 		if (apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-  turnbackhoax
+  turnbackhoax()
     .then((data) => {
       res.json(data)
     })
@@ -960,7 +976,7 @@ router.get("/search/servermc", async(req, res, next) => {
   apikeyInput = req.query.apikey;
   if (!apikeyInput) return res.json(loghandler.notparam)
 		if (apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-  servermc
+  servermc()
     .then((data) => {
       res.json(data)
     })

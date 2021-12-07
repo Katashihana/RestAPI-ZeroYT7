@@ -57,7 +57,6 @@ var {
   mcpedl,
   pstore,
   pornvid,
-  hentaivid,
 } = require("./../lib/tod");
 var {
   otakudesu,
@@ -1357,42 +1356,6 @@ router.get('/random/pornvid', async (req, res, next) => {
 		if (!apikeyInput) return res.json(loghandler.notparam)
 		if (apikeyInput !== `${key}`) return res.sendFile(invalidKey)
 		pornvid()
-		.then(result => {
-			res.json({
-				creator: creator,
-				result
-			})
-		})
-		.catch(e => {
-			console.log('Error :', color(e, 'red'))
-			res.sendFile(error)
-		})
-})
-
-router.get('/random/hentaivid', async (req, res, next) => {
-	        var apikeyInput = req.query.apikey
-
-		if (!apikeyInput) return res.json(loghandler.notparam)
-		if (apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-		hentaivid()
-		.then(result => {
-			res.json({
-				creator: creator,
-				result
-			})
-		})
-		.catch(e => {
-			console.log('Error :', color(e, 'red'))
-			res.sendFile(error)
-		})
-})
-
-router.get('/random/randomgore', async (req, res, next) => {
-	        var apikeyInput = req.query.apikey
-
-		if (!apikeyInput) return res.json(loghandler.notparam)
-		if (apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-		randomgore()
 		.then(result => {
 			res.json({
 				creator: creator,

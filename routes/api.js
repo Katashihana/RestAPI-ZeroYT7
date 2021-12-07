@@ -1356,7 +1356,7 @@ router.get('/random/pornvid', async (req, res, next) => {
 		if (!apikeyInput) return res.json(loghandler.notparam)
 		if (apikeyInput !== `${key}`) return res.sendFile(invalidKey)
 		pornvid()
-		.then(data => {
+		.then(result => {
 			res.json({
 				creator: creator,
 				result

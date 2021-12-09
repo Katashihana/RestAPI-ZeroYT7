@@ -1338,7 +1338,7 @@ router.get('/genshin/weapons/en', async (req, res, next) => {
 	if(!apikeyInput) return res.json(loghandler.notparam)
 	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
 
-       fetch(encodeURI(`https://github.com/Katashihana/api/blob/mistress/assets/data/weapons/${query}/en.json`))
+       fetch(encodeURI(`https://raw.githubusercontent.com/Katashihana/api/mistress/assets/data/weapons/${query}/en.json`))
         .then(response => response.json())
         .then(data => {
         var result = data;
@@ -1359,7 +1359,7 @@ router.get('/genshin/weapons/jp', async (req, res, next) => {
 	if(!apikeyInput) return res.json(loghandler.notparam)
 	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
 
-       fetch(encodeURI(`https://github.com/Katashihana/api/blob/mistress/assets/data/weapons/${query}/jp.json`))
+       fetch(encodeURI(`https://raw.githubusercontent.com/Katashihana/api/mistress/assets/data/weapons/${query}/jp.json`))
         .then(response => response.json())
         .then(data => {
         var result = data;
@@ -1418,7 +1418,7 @@ router.get('/genshin/characters/jp', async (req, res, next) => {
 	if(!apikeyInput) return res.json(loghandler.notparam)
 	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
 
-       fetch(encodeURI(`https://github.com/Katashihana/api/blob/mistress/assets/data/characters/{query}/jp.json`))
+       fetch(encodeURI(`https://raw.githubusercontent.com/Katashihana/api/mistress/assets/data/characters/${query}/jp.json`))
         .then(response => response.json())
         .then(data => {
         var result = data;
@@ -1439,7 +1439,7 @@ router.get('/genshin/characters/en', async (req, res, next) => {
 	if(!apikeyInput) return res.json(loghandler.notparam)
 	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
 
-       fetch(encodeURI(`https://github.com/Katashihana/api/blob/mistress/assets/data/characters/{query}/en.json`))
+       fetch(encodeURI(`https://raw.githubusercontent.com/Katashihana/api/mistress/assets/data/characters/${query}/en.json`))
         .then(response => response.json())
         .then(data => {
         var result = data;
@@ -1480,7 +1480,7 @@ router.get('/genshin/artifacts/en', async (req, res, next) => {
 	if(!apikeyInput) return res.json(loghandler.notparam)
 	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
 
-       fetch(encodeURI(`https://github.com/Katashihana/api/blob/mistress/assets/data/artifacts/${query}/en.json`))
+       fetch(encodeURI(`https://raw.githubusercontent.com/Katashihana/api/mistress/assets/data/artifacts/${query}/en.json`))
         .then(response => response.json())
         .then(data => {
         var result = data;
@@ -1501,7 +1501,7 @@ router.get('/genshin/artifacts/jp', async (req, res, next) => {
 	if(!apikeyInput) return res.json(loghandler.notparam)
 	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
 
-       fetch(encodeURI(`https://github.com/Katashihana/api/blob/mistress/assets/data/artifacts/${query}/jp.json`))
+       fetch(encodeURI(`https://raw.githubusercontent.com/Katashihana/api/mistress/assets/data/artifacts/${query}/jp.json`))
         .then(response => response.json())
         .then(data => {
         var result = data;

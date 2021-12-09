@@ -1331,6 +1331,191 @@ router.get('/game/tebakgambar2', async (req, res, next) => {
 })
 })
 
+router.get('/genshin/weapons/en', async (req, res, next) => {
+         apikeyInput = req.query.apikey
+         query = req.query.query;
+  if(!query) return res.json(loghandler.notquery)
+	if(!apikeyInput) return res.json(loghandler.notparam)
+	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
+
+       fetch(encodeURI(`https://github.com/Katashihana/api/blob/mistress/assets/data/weapons/${query}/en.json`))
+        .then(response => response.json())
+        .then(data => {
+        var result = data.result;
+             res.json({
+             	author: 'Katashi',
+                result
+             })
+         })
+         .catch(e => {
+         	res.sendFile(error)
+})
+})
+
+router.get('/genshin/weapons/jp', async (req, res, next) => {
+         apikeyInput = req.query.apikey
+         query = req.query.query;
+  if(!query) return res.json(loghandler.notquery)
+	if(!apikeyInput) return res.json(loghandler.notparam)
+	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
+
+       fetch(encodeURI(`https://github.com/Katashihana/api/blob/mistress/assets/data/weapons/${query}/jp.json`))
+        .then(response => response.json())
+        .then(data => {
+        var result = data.result;
+             res.json({
+             	author: 'Katashi',
+                result
+             })
+         })
+         .catch(e => {
+         	res.sendFile(error)
+})
+})
+
+router.get('/genshin/weapons/all', async (req, res, next) => {
+         apikeyInput = req.query.apikey
+	if(!apikeyInput) return res.json(loghandler.notparam)
+	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
+
+       fetch(encodeURI(`https://api.genshin.dev/weapons`))
+        .then(response => response.json())
+        .then(data => {
+        var result = data.result;
+             res.json({
+             	author: 'Katashi',
+                result
+             })
+         })
+         .catch(e => {
+         	res.sendFile(error)
+})
+})
+
+router.get('/genshin/characters/all', async (req, res, next) => {
+         apikeyInput = req.query.apikey
+	if(!apikeyInput) return res.json(loghandler.notparam)
+	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
+
+       fetch(encodeURI(`https://api.genshin.dev/characters`))
+        .then(response => response.json())
+        .then(data => {
+        var result = data.result;
+             res.json({
+             	author: 'Katashi',
+                result
+             })
+         })
+         .catch(e => {
+         	res.sendFile(error)
+})
+})
+
+router.get('/genshin/characters/jp', async (req, res, next) => {
+         apikeyInput = req.query.apikey
+         query = req.query.query;
+  if(!query) return res.json(loghandler.notquery)
+	if(!apikeyInput) return res.json(loghandler.notparam)
+	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
+
+       fetch(encodeURI(`https://github.com/Katashihana/api/blob/mistress/assets/data/characters/{query}/jp.json`))
+        .then(response => response.json())
+        .then(data => {
+        var result = data.result;
+             res.json({
+             	author: 'Katashi',
+                result
+             })
+         })
+         .catch(e => {
+         	res.sendFile(error)
+})
+})
+
+router.get('/genshin/characters/en', async (req, res, next) => {
+         apikeyInput = req.query.apikey
+         query = req.query.query;
+  if(!query) return res.json(loghandler.notquery)
+	if(!apikeyInput) return res.json(loghandler.notparam)
+	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
+
+       fetch(encodeURI(`https://github.com/Katashihana/api/blob/mistress/assets/data/characters/{query}/en.json`))
+        .then(response => response.json())
+        .then(data => {
+        var result = data.result;
+             res.json({
+             	author: 'Katashi',
+                result
+             })
+         })
+         .catch(e => {
+         	res.sendFile(error)
+})
+})
+
+router.get('/genshin/artifacts/all', async (req, res, next) => {
+         apikeyInput = req.query.apikey
+         query = req.query.query;
+  if(!query) return res.json(loghandler.notquery)
+	if(!apikeyInput) return res.json(loghandler.notparam)
+	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
+
+       fetch(encodeURI(`https://api.genshin.dev/artifacts`))
+        .then(response => response.json())
+        .then(data => {
+        var result = data.result;
+             res.json({
+             	author: 'Katashi',
+                result
+             })
+         })
+         .catch(e => {
+         	res.sendFile(error)
+})
+})
+
+router.get('/genshin/artifacts/en', async (req, res, next) => {
+         apikeyInput = req.query.apikey
+         query = req.query.query;
+  if(!query) return res.json(loghandler.notquery)
+	if(!apikeyInput) return res.json(loghandler.notparam)
+	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
+
+       fetch(encodeURI(`https://github.com/Katashihana/api/blob/mistress/assets/data/artifacts/${query}/en.json`))
+        .then(response => response.json())
+        .then(data => {
+        var result = data.result;
+             res.json({
+             	author: 'Katashi',
+                result
+             })
+         })
+         .catch(e => {
+         	res.sendFile(error)
+})
+})
+
+router.get('/genshin/artifacts/jp', async (req, res, next) => {
+         apikeyInput = req.query.apikey
+         query = req.query.query;
+  if(!query) return res.json(loghandler.notquery)
+	if(!apikeyInput) return res.json(loghandler.notparam)
+	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
+
+       fetch(encodeURI(`https://github.com/Katashihana/api/blob/mistress/assets/data/artifacts/${query}/jp.json`))
+        .then(response => response.json())
+        .then(data => {
+        var result = data.result;
+             res.json({
+             	author: 'Katashi',
+                result
+             })
+         })
+         .catch(e => {
+         	res.sendFile(error)
+})
+})
+
 router.get('/game/caklontong2', async (req, res, next) => {
          apikeyInput = req.query.apikey
 	if(!apikeyInput) return res.json(loghandler.notparam)

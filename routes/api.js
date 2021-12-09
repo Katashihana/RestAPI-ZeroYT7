@@ -994,7 +994,7 @@ router.get('/search/pornhub', async (req, res, next) => {
        fetch(encodeURI(`https://kocakz.herokuapp.com/api/media/pornhub/search?query=${query}`))
         .then(response => response.json())
         .then(data => {
-        var result = data.result;
+        var result = data;
              res.json({
                  creator : `${creator}`,
                  result
@@ -1079,7 +1079,7 @@ router.get('/download/xvideos', async (req, res, next) => {
 	if (!apikeyInput) return res.json(loghandler.notparam)
 		if (apikeyInput !== `${key}`) return res.sendFile(invalidKey)
 
-       fetch(encodeURI(`https://kocakz.herokuapp.com/api/media/pornhub/detail?url=${url}`))
+       fetch(encodeURI(`https://kocakz.herokuapp.com/api/media/xvideo/detail?url=${url}`))
         .then(response => response.json())
         .then(data => {
         var result = data.res;

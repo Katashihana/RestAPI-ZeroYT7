@@ -1161,9 +1161,7 @@ router.get("/nekopoi/latest", async(req, res, next) => {
 		if (apikeyInput !== `${key}`) return res.sendFile(invalidKey)
   latest()
     .then((data) => {
-    	res.json({
-				creator: creator,
-				result
+    	res.json(data)
     })
   .catch(e => {
 			console.log('Error :', color(e, 'red'))
@@ -1179,9 +1177,7 @@ router.get("/nekopoi/search", async(req, res, next) => {
 		if (apikeyInput !== `${key}`) return res.sendFile(invalidKey)
   search(query)
     .then((data) => {
-    	res.json({
-				creator: creator,
-				result
+    	res.json(data)
     })
   .catch(e => {
 			console.log('Error :', color(e, 'red'))
@@ -1198,9 +1194,7 @@ router.get("/nekopoi/getHentaiEpisode", async(req, res, next) => {
 		if (apikeyInput !== `${key}`) return res.sendFile(invalidKey)
   getHentaiEpisode(url)
     .then((data) => {
-    	res.json({
-				creator: creator,
-				result
+    	res.json(data)
     })
   .catch(e => {
 			console.log('Error :', color(e, 'red'))
@@ -1217,9 +1211,7 @@ router.get("/nekopoi/getHentai", async(req, res, next) => {
 		if (apikeyInput !== `${key}`) return res.sendFile(invalidKey)
   getHentai(url)
     .then((data) => {
-    	res.json({
-				creator: creator,
-				result
+    	res.json(data)
     })
   .catch(e => {
 			console.log('Error :', color(e, 'red'))
@@ -1233,9 +1225,7 @@ router.get("/nekopoi/random", async(req, res, next) => {
 		if (apikeyInput !== `${key}`) return res.sendFile(invalidKey)
   random()
     .then((data) => {
-    	res.json({
-				creator: creator,
-				result
+    	res.json(data)
     })
   .catch(e => {
 			console.log('Error :', color(e, 'red'))

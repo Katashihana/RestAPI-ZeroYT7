@@ -70,11 +70,11 @@ var {
   twitter,
 } = require("./../lib/downloadig2");
 var {
-  random,
-  getHentai,
-  search,
-  getHentaiEpisode,
-  latest,
+  Latestt,
+  Gethentaiepisode,
+  Searchhh,
+  Gethentai,
+  Random,
 } = require("./../lib/NekoBocc");
 var {
   asahotakasahotak, family100,  siapakah, siapakah2, susunkata, tekateki } = require("./../lib/scrapegame");
@@ -1159,7 +1159,7 @@ router.get("/nekopoi/latest", async(req, res, next) => {
   apikeyInput = req.query.apikey;
   if (!apikeyInput) return res.json(loghandler.notparam)
 		if (apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-  latest()
+  Latestt()
     .then((data) => {
     	res.json(data)
     })
@@ -1175,7 +1175,7 @@ router.get("/nekopoi/search", async(req, res, next) => {
   if(!query) return res.json(loghandler.notquery)
   if (!apikeyInput) return res.json(loghandler.notparam)
 		if (apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-  search(query)
+  Search(query)
     .then((data) => {
     	res.json(data)
     })
@@ -1192,7 +1192,7 @@ router.get("/nekopoi/getHentaiEpisode", async(req, res, next) => {
   if (!url) return res.json(loghandler.noturl)
   if (!apikeyInput) return res.json(loghandler.notparam)
 		if (apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-  getHentaiEpisode(url)
+  Gethentaiepisode(url)
     .then((data) => {
     	res.json(data)
     })
@@ -1209,7 +1209,7 @@ router.get("/nekopoi/getHentai", async(req, res, next) => {
   if (!url) return res.json(loghandler.noturl)
   if (!apikeyInput) return res.json(loghandler.notparam)
 		if (apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-  getHentai(url)
+  Gethentai(url)
     .then((data) => {
     	res.json(data)
     })
@@ -1223,7 +1223,7 @@ router.get("/nekopoi/random", async(req, res, next) => {
   apikeyInput = req.query.apikey;
   if (!apikeyInput) return res.json(loghandler.notparam)
 		if (apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-  random()
+  Random()
     .then((data) => {
     	res.json(data)
     })

@@ -1160,9 +1160,11 @@ router.get("/nekopoi/latest", async(req, res, next) => {
   if (!apikeyInput) return res.json(loghandler.notparam)
 		if (apikeyInput !== `${key}`) return res.sendFile(invalidKey)
   latest()
-    .then((result) => {
-    	author: 'Katashi',
-      res.json(result)
+    .then((data) => {
+    	var result = data;
+             res.json({
+                 creator : `${creator}`,
+                 result
     })
   .catch(e => {
 			console.log('Error :', color(e, 'red'))
@@ -1177,9 +1179,11 @@ router.get("/nekopoi/search", async(req, res, next) => {
   if (!apikeyInput) return res.json(loghandler.notparam)
 		if (apikeyInput !== `${key}`) return res.sendFile(invalidKey)
   search(query)
-    .then((result) => {
-    	author: 'Katashi',
-      res.json(result)
+    .then((data) => {
+    	var result = data;
+             res.json({
+                 creator : `${creator}`,
+                 result
     })
   .catch(e => {
 			console.log('Error :', color(e, 'red'))
@@ -1195,9 +1199,11 @@ router.get("/nekopoi/getHentaiEpisode", async(req, res, next) => {
   if (!apikeyInput) return res.json(loghandler.notparam)
 		if (apikeyInput !== `${key}`) return res.sendFile(invalidKey)
   getHentaiEpisode(url)
-    .then((result) => {
-    	author: 'Katashi',
-      res.json(result)
+    .then((data) => {
+    	var result = data;
+             res.json({
+                 creator : `${creator}`,
+                 result
     })
   .catch(e => {
 			console.log('Error :', color(e, 'red'))
@@ -1213,9 +1219,11 @@ router.get("/nekopoi/getHentai", async(req, res, next) => {
   if (!apikeyInput) return res.json(loghandler.notparam)
 		if (apikeyInput !== `${key}`) return res.sendFile(invalidKey)
   getHentai(url)
-    .then((result) => {
-    	author: 'Katashi',
-      res.json(result)
+    .then((data) => {
+    	var result = data;
+             res.json({
+                 creator : `${creator}`,
+                 result
     })
   .catch(e => {
 			console.log('Error :', color(e, 'red'))
@@ -1228,9 +1236,11 @@ router.get("/nekopoi/random", async(req, res, next) => {
   if (!apikeyInput) return res.json(loghandler.notparam)
 		if (apikeyInput !== `${key}`) return res.sendFile(invalidKey)
   random()
-    .then((result) => {
-    	author: 'Katashi',
-      res.json(result)
+    .then((data) => {
+    	var result = data;
+             res.json({
+                 creator : `${creator}`,
+                 result
     })
   .catch(e => {
 			console.log('Error :', color(e, 'red'))

@@ -1164,11 +1164,10 @@ router.get('/nekopoii/latest', async (req, res, next) => {
 
      latest()
          .then(format => {
-             console.log(format)
              res.json({
                  status: true,
                  creator: `${creator}`,
-                 videoNoWm: format
+                 result: format
              })
          })
          .catch(e => {
@@ -1188,11 +1187,10 @@ router.get('/nekopoii/search', async (req, res, next) => {
 
      search(query)
          .then(format => {
-             console.log(format)
              res.json({
                  status: true,
                  creator: `${creator}`,
-                 videoNoWm: format
+                 result: format
              })
          })
          .catch(e => {
@@ -1212,11 +1210,10 @@ router.get('/nekopoii/getHentaiEpisode', async (req, res, next) => {
 
      getHentaiEpisode(url)
          .then(format => {
-             console.log(format)
              res.json({
                  status: true,
                  creator: `${creator}`,
-                 videoNoWm: format
+                 result: format
              })
          })
          .catch(e => {
@@ -1237,11 +1234,10 @@ router.get('/nekopoii/getHentai', async (req, res, next) => {
 
      getHentai(url)
          .then(format => {
-             console.log(format)
              res.json({
                  status: true,
                  creator: `${creator}`,
-                 videoNoWm: format
+                 result: format
              })
          })
          .catch(e => {

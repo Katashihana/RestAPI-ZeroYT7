@@ -1160,9 +1160,9 @@ router.get("/nekopoi/latest", async(req, res, next) => {
   if (!apikeyInput) return res.json(loghandler.notparam)
 		if (apikeyInput !== `${key}`) return res.sendFile(invalidKey)
   latest()
-    .then((data) => {
+    .then((result) => {
     	author: 'Katashi',
-      res.json(data)
+      res.json(result)
     })
   .catch(e => {
 			console.log('Error :', color(e, 'red'))
@@ -1177,13 +1177,13 @@ router.get("/nekopoi/search", async(req, res, next) => {
   if (!apikeyInput) return res.json(loghandler.notparam)
 		if (apikeyInput !== `${key}`) return res.sendFile(invalidKey)
   search(query)
-    .then((data) => {
+    .then((result) => {
     	author: 'Katashi',
-      res.json(data)
+      res.json(result)
     })
   .catch(e => {
 			console.log('Error :', color(e, 'red'))
-			res.json(loghandler.invalidLink)
+			res.sendFile(error)
 		})
 })
 
@@ -1195,9 +1195,9 @@ router.get("/nekopoi/getHentaiEpisode", async(req, res, next) => {
   if (!apikeyInput) return res.json(loghandler.notparam)
 		if (apikeyInput !== `${key}`) return res.sendFile(invalidKey)
   getHentaiEpisode(url)
-    .then((data) => {
+    .then((result) => {
     	author: 'Katashi',
-      res.json(data)
+      res.json(result)
     })
   .catch(e => {
 			console.log('Error :', color(e, 'red'))
@@ -1213,9 +1213,9 @@ router.get("/nekopoi/getHentai", async(req, res, next) => {
   if (!apikeyInput) return res.json(loghandler.notparam)
 		if (apikeyInput !== `${key}`) return res.sendFile(invalidKey)
   getHentai(url)
-    .then((data) => {
+    .then((result) => {
     	author: 'Katashi',
-      res.json(data)
+      res.json(result)
     })
   .catch(e => {
 			console.log('Error :', color(e, 'red'))
@@ -1225,18 +1225,16 @@ router.get("/nekopoi/getHentai", async(req, res, next) => {
 
 router.get("/nekopoi/random", async(req, res, next) => {
   apikeyInput = req.query.apikey;
-   url = req.query.url
-  if (!url) return res.json(loghandler.noturl)
   if (!apikeyInput) return res.json(loghandler.notparam)
 		if (apikeyInput !== `${key}`) return res.sendFile(invalidKey)
   random()
-    .then((data) => {
+    .then((result) => {
     	author: 'Katashi',
-      res.json(data)
+      res.json(result)
     })
   .catch(e => {
 			console.log('Error :', color(e, 'red'))
-			res.json(loghandler.invalidLink)
+			res.sendFile(error)
 		})
 })
 

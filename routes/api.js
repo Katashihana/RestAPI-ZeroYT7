@@ -70,9 +70,12 @@ var {
   twitter,
 } = require("./../lib/downloadig2");
 var {
+  Brainly,
+} = require("./../lib/brainly");
+var {
   latest,
-  getHentaiEpisode,
   search,
+  getHentaiEpisode,
   getHentai,
 } = require("./../lib/NekoBocc");
 var {
@@ -104,6 +107,12 @@ loghandler = {
         creator: `${creator}`,
         code: 406,
         message: 'Masukan parameter emoji'
+    },
+    notcount: {
+        status: false,
+        creator: `${creator}`,
+        code: 406,
+        message: 'Masukan parameter count'
     },
     notangka: {
         status: false,
@@ -1155,7 +1164,7 @@ router.get("/media/fbdown2", async(req, res, next) => {
 })
 
 router.get('/nekopoii/latest', async (req, res, next) => {
-    var apikeyInput = req.query.apikey,
+     apikeyInput = req.query.apikey,
 
 
 	if(!apikeyInput) return res.json(loghandler.notparam)
@@ -1164,10 +1173,7 @@ router.get('/nekopoii/latest', async (req, res, next) => {
 
      latest()
          .then(format => {
-             res.json({
-                 status: true,
-                 creator: `${creator}`,
-                 result: format
+             res.json(format)
              })
          })
          .catch(e => {
@@ -1177,7 +1183,7 @@ router.get('/nekopoii/latest', async (req, res, next) => {
 })
 
 router.get('/nekopoii/search', async (req, res, next) => {
-    var apikeyInput = req.query.apikey,
+     apikeyInput = req.query.apikey,
     query = req.query.query;
   
 
@@ -1187,10 +1193,7 @@ router.get('/nekopoii/search', async (req, res, next) => {
 
      search(query)
          .then(format => {
-             res.json({
-                 status: true,
-                 creator: `${creator}`,
-                 result: format
+             res.json(format)
              })
          })
          .catch(e => {
@@ -1200,7 +1203,7 @@ router.get('/nekopoii/search', async (req, res, next) => {
 })
 
 router.get('/nekopoii/getHentaiEpisode', async (req, res, next) => {
-    var apikeyInput = req.query.apikey,
+     apikeyInput = req.query.apikey,
         url = req.query.url
 
 
@@ -1210,10 +1213,7 @@ router.get('/nekopoii/getHentaiEpisode', async (req, res, next) => {
 
      getHentaiEpisode(url)
          .then(format => {
-             res.json({
-                 status: true,
-                 creator: `${creator}`,
-                 result: format
+             res.json(format)
              })
          })
          .catch(e => {
@@ -1224,25 +1224,42 @@ router.get('/nekopoii/getHentaiEpisode', async (req, res, next) => {
 
 
 router.get('/nekopoii/getHentai', async (req, res, next) => {
-    var apikeyInput = req.query.apikey,
-        url = req.query.url
-
-
+     apikeyInput = req.query.apikey,
+        query = req.query.query,
+        count = req.query.count,
+  
 	if(!apikeyInput) return res.json(loghandler.notparam)
 	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
-     if (!url) return res.json(loghandler.noturl)
+     if (!count) return res.json(loghandler.count)
+     if(!query) return res.json(loghandler.notquery)
 
      getHentai(url)
          .then(format => {
-             res.json({
-                 status: true,
-                 creator: `${creator}`,
-                 result: format
+             res.json(format)
              })
          })
          .catch(e => {
 			console.log('Error :', color(e, 'red'))
 			res.json(loghandler.invalidLink)
+		})
+})
+
+router.get('/brainly', async (req, res, next) => {
+    var apikeyInput = req.query.apikey,
+
+
+	if(!apikeyInput) return res.json(loghandler.notparam)
+	if(apikeyInput !== `${key}`) return res.sendFile(invalidKey)
+     
+
+     Brainly(query, count)
+         .then(format => {
+             res.json(format)
+             })
+         })
+         .catch(e => {
+			console.log('Error :', color(e, 'red'))
+			res.sendFile(error)
 		})
 })
 
